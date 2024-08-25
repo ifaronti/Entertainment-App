@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import entertainmentApp from "./tailwind/entertainment-app";
 
 const config: Config = {
   content: [
@@ -15,6 +16,8 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  presets: [
+    entertainmentApp
+  ]
 };
 export default config;
