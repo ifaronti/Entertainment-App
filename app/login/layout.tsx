@@ -1,6 +1,11 @@
 import { AppLogo, Heading, Section, Text } from "@/components";
 import { Card } from "@/components";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Log into your account",
+};
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

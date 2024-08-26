@@ -3,6 +3,7 @@
 import { useState } from "react";
 import LoginForm from "./LoginForm";
 import { Button } from "@/components";
+import { ButtonVariants } from "@/components/Button";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -15,7 +16,7 @@ const Page = () => {
           console.log(e);
         }}
       />
-      <Button className="text-center w-full">Login to your account</Button>
+      <Button variant={ButtonVariants.Primary} className="text-center w-full">Login to your account</Button>
     </div>
   );
 };
