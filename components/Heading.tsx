@@ -4,6 +4,7 @@ export enum HeadingVariants {
   L,
   M,
   S,
+  XS,
 }
 
 export type HeadingProps = TextProps & {
@@ -17,6 +18,7 @@ const HEADING_MAP: Record<
   [HeadingVariants.L]: (props) => <h1 {...props} />,
   [HeadingVariants.M]: (props) => <h2 {...props} />,
   [HeadingVariants.S]: (props) => <h3 {...props} />,
+  [HeadingVariants.XS]: (props) => <h4 {...props} />,
 };
 
 const Heading = ({ variant = HeadingVariants.L, ...props }: HeadingProps) => {

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import LoginForm from "./LoginForm";
+import LoginForm, { LoginFormValue } from "./LoginForm";
 import { Button } from "@/components";
 import { ButtonVariants } from "@/components/Button";
 
@@ -12,11 +12,27 @@ const Page = () => {
   return (
     <div className="flex flex-col gap-8">
       <LoginForm
-        onChange={(e) => {
-          console.log(e);
+        onChange={({ email, password }: LoginFormValue) => {
+          setEmail(email);
+          setPassword(password);
+        }}
+        value={{
+          email,
+          password,
         }}
       />
-      <Button variant={ButtonVariants.Primary} className="text-center w-full">Login to your account</Button>
+      <Button
+        onClick={() => {
+          console.log({
+            email,
+            password,
+          });
+        }}
+        variant={ButtonVariants.Primary}
+        className="text-center w-full"
+      >
+        Login to your account
+      </Button>
     </div>
   );
 };
