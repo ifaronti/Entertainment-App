@@ -90,6 +90,7 @@ export default {
         input: {
           backgroundColor: "transparent",
           borderBottom: `1px solid ${theme("colors.primary.DEFAULT")}`,
+          borderRadius: theme("borderRadius.md"),
           minHeight: `${INPUT_HEIGHT}px`,
           padding: theme("padding.2"),
         },
