@@ -1,5 +1,5 @@
 import { AppLogo, Heading, Section, Text } from "@/components";
-import { Card } from "@/components/Card";
+import { Card } from "@/components";
 import Link from "next/link";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {

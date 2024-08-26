@@ -2,7 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 
 export type ContainerProps = DetailedHTMLProps<
   HTMLAttributes<HTMLDivElement>,
-  HTMLParagraphElement
+  HTMLDivElement
 >;
 
 const Container = ({ children, ...props }: ContainerProps) => {

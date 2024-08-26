@@ -3,7 +3,7 @@ import Container from "./Container";
 
 export type FooterProps = DetailedHTMLProps<
   HTMLAttributes<HTMLElement>,
-  HTMLParagraphElement
+  HTMLElement
 >;
 
 const Footer = ({ children, ...props }: FooterProps) => {

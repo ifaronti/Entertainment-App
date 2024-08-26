@@ -1,5 +1,8 @@
 import plugin from "tailwindcss/plugin";
 
+const BUTTON_HEIGHT = 48;
+const INPUT_HEIGHT = 37;
+
 export default {
   theme: {
     extend: {
@@ -23,7 +26,7 @@ export default {
         },
         ".card": {
           backgroundColor: theme("colors.secondary.light"),
-          borderRadius: theme('borderRadius.md'),
+          borderRadius: theme('borderRadius.xl'),
           padding: theme('padding.8'),
         },
         html: {
@@ -32,6 +35,12 @@ export default {
         },
         body: {
           fontSize: "15px"
+        },
+        button: {
+          color: "white",
+          backgroundColor: theme("colors.primary.DEFAULT"),
+          borderRadius: theme('borderRadius.md'),
+          minHeight: `${BUTTON_HEIGHT}px`,
         },
         p: {
           fontSize: "inherit"
@@ -44,6 +53,11 @@ export default {
         },
         h3: {
           fontSize: "18px"
+        },
+        input: {
+          backgroundColor: "transparent",
+          borderBottom: `1px solid ${theme("colors.primary.DEFAULT")}`,
+          minHeight: `${INPUT_HEIGHT}px`,
         },
         small: {
           fontSize: "13px"
