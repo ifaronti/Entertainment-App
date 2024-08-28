@@ -7,9 +7,8 @@ export const metadata: Metadata = {
   title: "Log into your account",
 };
 
-const Layout = ({children}:  {children:React.ReactNode}  /* explain this */) => {
+const Layout = ({children}:  {children:React.ReactNode}) => {
   return (
-    /* Why not simply use Section element ? why make it into a component?? */
     <Section className="flex justify-center items-center w-full h-screen">
       <div>
         <div className="flex items-center justify-center h-40">

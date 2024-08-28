@@ -5,9 +5,8 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 export interface LoginFormValue {
   email: string;
   password: string;
-}; /* This is type declaration for the login info right */
+};
 
-/*Explain the omit, I get you decalred the attribute "onChange"? confusing! */
 type LoginFormProps = Omit<
   DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement>,
   "onChange"
@@ -16,11 +15,6 @@ type LoginFormProps = Omit<
   value: LoginFormValue;
 };
 
-/* Never used these features of react before so I need a little note 
-explaining their usages in this particular context. LoginFormProps is also
-typeScript right? I get that you decalred onChange as a function here so just
-like onChange=()=>{} in vanilla React or JS? then destructured in the props
-for LoginForm? */
 
 const LoginForm = ({
   className,

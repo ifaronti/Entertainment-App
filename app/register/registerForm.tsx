@@ -1,5 +1,6 @@
 import { registerStyles } from "./style";
 import { Heading } from "@/components";
+import Button, {ButtonVariants} from "@/components/Button/Button";
 
 interface props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
