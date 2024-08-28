@@ -2,7 +2,7 @@ import { Input } from "@/components";
 import classNames from "classnames";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export type LoginFormValue = {
+export interface LoginFormValue {
   email: string;
   password: string;
 }; /* This is type declaration for the login info right */
