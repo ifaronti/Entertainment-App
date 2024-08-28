@@ -28,6 +28,8 @@ const Page = () => {
             password,
           });
         }}
+        /* Explain this variant a little bit in this context. Why use inline 
+        styling again? */
         variant={ButtonVariants.Primary}
         className="text-center w-full"
       >
