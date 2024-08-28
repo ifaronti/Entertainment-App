@@ -15,6 +15,17 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    screens: {
+      'sm': '350px',
+
+      'md': '700px',
+
+      'lg': '849px',
+
+      'xl': '1200px',
+
+      '2xl': '1536px',
+    }
   },
   presets: [
     entertainmentApp
