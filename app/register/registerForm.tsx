@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { registerStyles } from './style'
+import { FC } from "react";
 
-export default function RegisterForm() {
+export default function RegisterForm({ children }: { children: React.ReactNode }) {
   const [info, setInfo] = useState({ email: "", password: "", rePassword: "" });
   const [errMsg, setErrMsg] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setInfo((prev) => {
       return {
@@ -17,7 +18,7 @@ export default function RegisterForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { password, email, rePassword } = info;
     e.preventDefault();
     if (password !== rePassword) {
@@ -26,10 +27,6 @@ export default function RegisterForm() {
     }
     if (!email || !password || !rePassword) {
       setErrMsg("All fields are required");
-      return;
-    }
-    if (!email.validity.valid) {
-      setErrMsg("Invalid email format");
       return;
     }
     console.log(info);
@@ -59,4 +56,6 @@ export default function RegisterForm() {
       />
     </form>
   );
+
+  return form
 }
