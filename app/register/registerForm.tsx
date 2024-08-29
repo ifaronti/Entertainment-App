@@ -46,8 +46,8 @@ export default function RegisterForm({
           className={registerStyles.input}
         />
         <Button variant={ButtonVariants.Primary}>Create an account</Button>
-        <Text className="text-center">
-          <span>Already have an account?  </span>{" "}
+        <Text className="text-center flex gap-2 justify-center">
+          <span>Already have an account?</span>{" "}
           <Link href="/login">Login</Link>
         </Text>
       </form>

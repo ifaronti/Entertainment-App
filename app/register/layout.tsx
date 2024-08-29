@@ -4,7 +4,7 @@ import Container from "@/components/Container"
 import { registerStyles } from "./style";
 
 export const metadata: Metadata = {
-    title: "Register to begin"
+    title: "Register to begin",
 };
   
 export default function Layout({ children }: { children: React.ReactNode }) {
