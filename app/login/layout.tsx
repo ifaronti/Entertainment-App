@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Log into your account",
 };
 
-const Layout = ({children}:  {children:React.ReactNode}) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Section className="flex justify-center items-center w-full h-screen">
       <div>

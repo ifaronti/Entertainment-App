@@ -15,7 +15,6 @@ type LoginFormProps = Omit<
   value: LoginFormValue;
 };
 
-
 const LoginForm = ({
   className,
   value,

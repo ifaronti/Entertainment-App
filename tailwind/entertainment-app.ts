@@ -87,11 +87,14 @@ export default {
           fontSize: "18px",
           fontWeight: "500",
         },
+        fieldset: {
+          borderBottom: `1px solid ${theme("colors.secondary.very-light")}`,
+        },
         input: {
           backgroundColor: "transparent",
-          borderBottom: `1px solid ${theme("colors.secondary.very-light")}`,
           borderRadius: theme("borderRadius.md"),
           minHeight: `${INPUT_HEIGHT}px`,
+          outline: "none",
           padding: theme("padding.2"),
           "&.error": {
             borderColor: theme("colors.primary.DEFAULT"),
