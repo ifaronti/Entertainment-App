@@ -1,8 +1,10 @@
 import { registerStyles } from "./style";
 import { Heading } from "@/components";
-import Button, {ButtonVariants} from "@/components/Button/Button";
+import Button, { ButtonVariants } from "@/components/Button/Button";
+import Text from "@/components/Text";
+import Link from "next/link";
 
-interface props {
+export interface props {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   info: { email: string; password: string; rePassword: string };
@@ -14,9 +16,9 @@ export default function RegisterForm({
   info,
 }: props) {
   const form = (
-    <form className={registerStyles.form} onSubmit={handleSubmit}>
-      <Heading className="pl-8">Sign Up</Heading>
-      <div className="w-fit flex flex-col gap-10 my-auto relative mx-auto">
+    <div role="presentation" className={`${registerStyles.wrapper}`}>
+      <form onSubmit={handleSubmit} className={registerStyles.form}>
+      <Heading className="mb-4">Sign Up</Heading>
         <input
           type="text"
           onChange={handleChange}
@@ -43,8 +45,13 @@ export default function RegisterForm({
           placeholder="Repeat password"
           className={registerStyles.input}
         />
-      </div>
-    </form>
+        <Button variant={ButtonVariants.Primary}>Create an account</Button>
+        <Text className="text-center">
+          <span>Already have an account?  </span>{" "}
+          <Link href="/login">Login</Link>
+        </Text>
+      </form>
+    </div>
   );
 
   return <div>{form}</div>;
