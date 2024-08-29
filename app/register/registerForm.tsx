@@ -20,11 +20,14 @@ export default function RegisterForm({
       <form onSubmit={handleSubmit} className={registerStyles.form}>
       <Heading className="mb-4">Sign Up</Heading>
         <input
-          type="text"
+          type="email"
           onChange={handleChange}
           value={info.email}
           name="email"
           placeholder="Email address"
+          pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+          /*the default pattern excuses some invalid emails. 
+          It's best to define a pattern */
           className={registerStyles.input}
         />
 
@@ -33,6 +36,7 @@ export default function RegisterForm({
           onChange={handleChange}
           value={info.password}
           name="password"
+          min={8}
           className={`${registerStyles.input}`}
           placeholder="password"
         />
