@@ -34,9 +34,8 @@ export default function RegistrationForm({
         name="email"
         placeholder="Email address"
       />
-
       <Input
-        type="text"
+        type="password"
         onChange={onChange}
         value={value.password}
         name="password"
@@ -44,7 +43,7 @@ export default function RegistrationForm({
         placeholder="password"
       />
       <Input
-        type="text"
+        type="password"
         onChange={onChange}
         value={value.confirmPassword}
         name="confirmPassword"
