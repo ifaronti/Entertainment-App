@@ -4,11 +4,11 @@ import Button, { ButtonVariants } from "@/components/Button/Button";
 import Text from "@/components/Text";
 import Link from "next/link";
 
-export interface props {
+export type props = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   info: { email: string; password: string; rePassword: string };
-}
+};
 
 export default function RegisterForm({
   handleChange,
@@ -18,7 +18,7 @@ export default function RegisterForm({
   const form = (
     <div role="presentation" className={`${registerStyles.wrapper}`}>
       <form onSubmit={handleSubmit} className={registerStyles.form}>
-      <Heading className="mb-4">Sign Up</Heading>
+        <Heading className="mb-4">Sign Up</Heading>
         <input
           type="email"
           onChange={handleChange}
@@ -49,14 +49,15 @@ export default function RegisterForm({
           placeholder="Repeat password"
           className={registerStyles.input}
         />
-        <Button variant={ButtonVariants.Primary}>Create an account</Button>
-        <Text className="text-center flex gap-2 justify-center">
-          <span>Already have an account?</span>{" "}
-          <Link href="/login">Login</Link>
+        <Button aria-label="Form submit" variant={ButtonVariants.Primary}>
+          Create an account
+        </Button>
+        <Text className={registerStyles.text}>
+          <span>Already have an account?</span> <Link href="/login">Login</Link>
         </Text>
       </form>
     </div>
   );
 
-  return <div>{form}</div>;
+  return form;
 }

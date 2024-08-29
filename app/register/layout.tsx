@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
   
 export default function Layout({ children }: { children: React.ReactNode }) {
-    return <Container className={registerStyles.layoutContainer}>
+    return <Container role="presentation" className={registerStyles.layoutContainer}>
                 <AppLogo/>
                 {children}
            </Container>
