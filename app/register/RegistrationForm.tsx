@@ -33,6 +33,7 @@ export default function RegistrationForm({
         value={value.email}
         name="email"
         placeholder="Email address"
+        required
       />
       <Input
         type="password"
@@ -40,7 +41,8 @@ export default function RegistrationForm({
         value={value.password}
         name="password"
         min={8}
-        placeholder="password"
+        placeholder="Password"
+        required
       />
       <Input
         type="password"
@@ -48,6 +50,7 @@ export default function RegistrationForm({
         value={value.confirmPassword}
         name="confirmPassword"
         placeholder="Repeat password"
+        required
       />
     </form>
   );
