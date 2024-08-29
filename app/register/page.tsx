@@ -31,12 +31,10 @@ export default function Register() {
     console.log(info);
   };
   return (
-    <section>
       <RegisterForm
         info={info}
         handleChange={handleChange}
         handleSubmit={handleSubmit}
       />
-    </section>
   );
 }
