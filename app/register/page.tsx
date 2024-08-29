@@ -40,13 +40,7 @@ export default function Register() {
 
   return (
     <div className="flex flex-col gap-8">
-      <RegistrationForm
-        value={value}
-        onChange={handleChange}
-        onKeyDown={(e) => {
-          if (e.key == "enter") handleSubmit();
-        }}
-      />
+      <RegistrationForm value={value} onChange={handleChange} />
       <Button
         onClick={() => {
           handleSubmit();
