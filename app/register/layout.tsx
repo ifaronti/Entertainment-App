@@ -18,15 +18,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           <Card className="min-w-[400px] flex flex-col gap-4">
             <Heading>Sign up</Heading>
             <div className="flex flex-col gap-3">{children}</div>
-          </Card>
-          <div>
             <div className="text-center">
               <Text>
                 <span>Already have an account?</span>{" "}
                 <Link href="/login">Login</Link>
               </Text>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </Section>
