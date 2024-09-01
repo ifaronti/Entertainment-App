@@ -4,7 +4,7 @@ import RegisterForm from "./registerForm";
 import { useState } from "react";
 
 export default function Register() {
-  const [info, setInfo] = useState({ email: "", password: "", rePassword: "" });
+  const [info, setInfo] = useState({ email: "", password: "", confirmPassword: "" });
   const [errMsg, setErrMsg] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,12 +19,12 @@ export default function Register() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { password, email, rePassword } = info;
-    if (password !== rePassword) {
+    const { password, email, confirmPassword } = info;
+    if (password !== confirmPassword) {
       setErrMsg("Passwords do not match");
       return;
     }
-    if (!email || !password || !rePassword) {
+    if (!email || !password || !confirmPassword) {
       setErrMsg("All fields are required");
       return;
     }

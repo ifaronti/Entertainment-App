@@ -7,7 +7,7 @@ import Link from "next/link";
 export type props = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  info: { email: string; password: string; rePassword: string };
+  info: { email: string; password: string; confirmPassword: string };
 };
 
 export default function RegisterForm({
@@ -26,27 +26,25 @@ export default function RegisterForm({
           name="email"
           placeholder="Email address"
           pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-          /*the default pattern excuses some invalid emails. 
-          It's best to define a pattern */
           className={registerStyles.input}
         />
 
         <input
-          type="text"
+          type="password"
           onChange={handleChange}
           value={info.password}
           name="password"
           min={8}
           className={`${registerStyles.input}`}
-          placeholder="password"
+          placeholder="Password"
         />
 
         <input
-          type="text"
+          type="password"
           onChange={handleChange}
-          value={info.rePassword}
-          name="rePassword"
-          placeholder="Repeat password"
+          value={info.confirmPassword}
+          name="confirmPassword"
+          placeholder="Confirm password"
           className={registerStyles.input}
         />
         <Button aria-label="Form submit" variant={ButtonVariants.Primary}>
