@@ -28,6 +28,7 @@ const Page = () => {
             password,
           });
         }}
+        
         variant={ButtonVariants.Primary}
         className="text-center w-full"
       >
