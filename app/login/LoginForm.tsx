@@ -2,11 +2,10 @@ import { Input } from "@/components";
 import classNames from "classnames";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface LoginFormValue {
+export type LoginFormValue = {
   email: string;
   password: string;
 };
-
 type LoginFormProps = Omit<
   DetailedHTMLProps<HTMLAttributes<HTMLFormElement>, HTMLFormElement>,
   "onChange"
@@ -14,7 +13,6 @@ type LoginFormProps = Omit<
   onChange: (value: LoginFormValue) => void;
   value: LoginFormValue;
 };
-
 const LoginForm = ({
   className,
   value,
