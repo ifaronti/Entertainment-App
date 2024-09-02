@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import NavButtons from "./navButtons";
@@ -15,7 +15,7 @@ export default function NavBar() {
   };
 
   return (
-    <nav className="flex flex-col rounded-[1.25rem] py-8 bg-[#161d2f] items-center h-screen w-24 justify-between">
+    <nav className="flex flex-col rounded-[1.25rem] py-8 bg-[#161d2f] items-center h-[833px] w-24 justify-between">
       <NavButtons current={current} goToPage={goToPage} />
 
       <Image
