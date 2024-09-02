@@ -17,7 +17,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
         height="20"
         xmlns="http://www.w3.org/2000/svg"
       >
-      <path
+        <path
           className="hover:fill-[#FC4747] cursor-pointer"
           d="M8 0H1C.4 0 0 .4 0 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm0 11H1c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1v-7c0-.6-.4-1-1-1ZM19 0h-7c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1Zm0 11h-7c-.6 0-1 .4-1 1v7c0 .6.4 1 1 1h7c.6 0 1-.4 1-1v-7c0-.6-.4-1-1-1Z"
           fill={current === "home" ? "#fff" : "#5A698F"}
@@ -32,7 +32,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
         height="20"
         xmlns="http://www.w3.org/2000/svg"
       >
-      <path
+        <path
           className="hover:fill-[#FC4747] cursor-pointer"
           d="M16.956 0H3.044A3.044 3.044 0 0 0 0 3.044v13.912A3.044 3.044 0 0 0 3.044 20h13.912A3.044 3.044 0 0 0 20 16.956V3.044A3.044 3.044 0 0 0 16.956 0ZM4 9H2V7h2v2Zm-2 2h2v2H2v-2Zm16-2h-2V7h2v2Zm-2 2h2v2h-2v-2Zm2-8.26V4h-2V2h1.26a.74.74 0 0 1 .74.74ZM2.74 2H4v2H2V2.74A.74.74 0 0 1 2.74 2ZM2 17.26V16h2v2H2.74a.74.74 0 0 1-.74-.74Zm16 0a.74.74 0 0 1-.74.74H16v-2h2v1.26Z"
           fill={current === "movies" ? "#fff" : "#5A698F"}
@@ -41,17 +41,16 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
   );
 
   const navTvSeriesBtn: navButtonsType = (
-    <svg
-      
+      <svg
         onClick={()=>goToPage('tv')}
         width="20"
         height="20"
         xmlns="http://www.w3.org/2000/svg"
       >
-      <path
-          className="hover:fill-[#FC4747] cursor-pointer"
-          d="M20 4.481H9.08l2.7-3.278L10.22 0 7 3.909 3.78.029 2.22 1.203l2.7 3.278H0V20h20V4.481Zm-8 13.58H2V6.42h10v11.64Zm5-3.88h-2v-1.94h2v1.94Zm0-3.88h-2V8.36h2v1.94Z"
-          fill={current === "tv" ? "#fff" : "#5A698F"}
+        <path
+            className="hover:fill-[#FC4747] cursor-pointer"
+            d="M20 4.481H9.08l2.7-3.278L10.22 0 7 3.909 3.78.029 2.22 1.203l2.7 3.278H0V20h20V4.481Zm-8 13.58H2V6.42h10v11.64Zm5-3.88h-2v-1.94h2v1.94Zm0-3.88h-2V8.36h2v1.94Z"
+            fill={current === "tv" ? "#fff" : "#5A698F"}
         />
       </svg>
   );
@@ -74,11 +73,11 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
   return (
     <div role="presentation" className="flex flex-col gap-[75px] items-center">
       <AppLogo/>
-        <div role="presentation" className="flex flex-col gap-10">
-          {home}
-          {navMoviesBtn}
-          {navTvSeriesBtn}
-          {navBookmarkBtn}
+      <div role="presentation" className="flex flex-col gap-10">
+        {home}
+        {navMoviesBtn}
+        {navTvSeriesBtn}
+        {navBookmarkBtn}
       </div>
     </div>
   )
