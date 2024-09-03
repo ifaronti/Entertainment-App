@@ -45,7 +45,7 @@ export default function Trending({ data, bookmarked }: dataProps) {
           src={item.thumbnail.trending.large.substring(1)}
           width={470}
           height={230}
-          alt={"trending" + index + 1}
+          alt={"trending" + (index + 1)}
           className="absolute rounded-lg flex-shrink-0"
         />
         

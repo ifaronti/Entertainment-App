@@ -15,7 +15,6 @@
   .no-scrollbar {
     -ms-overflow-style:auto;
     scrollbar-width: none;
-    overflow-x: auto;
   }
   /* Do not remove the above no-scrollbar styling. It is only to remove the
   scrollbar in trending section of the dashboard as tailwind doesn't have the above
