@@ -12,7 +12,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
   
   const home: navButtonsType = (
       <svg
-        onClick={()=>goToPage('home')}
+        onClick={()=>goToPage('dashboard')}
         width="20"
         height="20"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
 
   const navMoviesBtn: navButtonsType = (
       <svg
-        onClick={()=>goToPage('movies')}
+        onClick={()=>goToPage('dashboard/movies')}
         width="20"
         height="20"
         xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
 
   const navTvSeriesBtn: navButtonsType = (
       <svg
-        onClick={()=>goToPage('tv')}
+        onClick={()=>goToPage('dashboard/tv')}
         width="20"
         height="20"
         xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@ export default function NavButtons({current, goToPage}: navProps):React.ReactNod
 
   const navBookmarkBtn: navButtonsType = (
     <svg
-      onClick={()=>goToPage('bookmarks')}
+      onClick={()=>goToPage('dashboard/bookmarks')}
       width="17"
       height="20"
       xmlns="http://www.w3.org/2000/svg"

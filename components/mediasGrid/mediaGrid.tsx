@@ -4,13 +4,18 @@ import { dataProps } from "@/app/dashboard/trending";
 import Image from "next/image";
 
 type gridProps = {
-    data:dataProps["data"]
-    bookmarked:string[]
-    header: string;
-    addBookmark: () => void
+  data: dataProps["data"];
+  bookmarked: string[];
+  header: string;
+  addBookmark: () => void;
 };
 
-export default function MediaGrid({ data, bookmarked, header, addBookmark }: gridProps) {
+export default function MediaGrid({
+  data,
+  bookmarked,
+  header,
+  addBookmark,
+}: gridProps) {
   const heading = <h2>{header}</h2>;
 
   const mediaGrids: JSX.Element[] = data?.map((item, index) => {
@@ -26,29 +31,27 @@ export default function MediaGrid({ data, bookmarked, header, addBookmark }: gri
           />
           <span className="absolute z-50 top-4 right-4">
             <Bookmarks
-                item={item}
-                bookmarked={bookmarked}
-                addBookmark={() => addBookmark}
+              item={item}
+              bookmarked={bookmarked}
+              addBookmark={() => addBookmark}
             />
           </span>
         </div>
         <div className="absolute bottom-0 left-0">
-            <DetailsText
-                item={item}
-                pSize={'text-[.8125rem]'}
-                titleSize={'text-lg'}
-            />
+          <DetailsText
+            item={item}
+            pSize={"text-[.8125rem]"}
+            titleSize={"text-lg"}
+          />
         </div>
       </div>
     );
   });
 
-    return (
-        <section className="w-[1220px] flex flex-col gap-8">
-            {heading}
-            <div className="grid grid-cols-4 gap-x-10 gap-y-8">
-                {mediaGrids}
-            </div>
-        </section>
-    )
+  return (
+    <section className="w-[1220px] flex flex-col gap-8">
+      {heading}
+      <div className="grid grid-cols-4 gap-x-10 gap-y-8">{mediaGrids}</div>
+    </section>
+  );
 }
