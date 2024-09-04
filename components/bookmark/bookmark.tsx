@@ -34,7 +34,7 @@ export default function Bookmarks({bookmarked, item, addBookmark}:bookmarkProps)
     }, [bookmarked, item.title])
 
     return( 
-        <p className="flex items-center justify-center" onClick={addRemoveBookmark}>
+        <p className="flex cursor-pointer items-center justify-center" onClick={addRemoveBookmark}>
             <span className='z-50'>{isBookmarked? bookmarkFullIcon : bookmarkEmptyIcon}</span>
             <span className="flex-shrink-0 absolute rounded-[100%] w-8 h-8 opacity-[0.5006] bg-[#10141e]"></span>
         </p>

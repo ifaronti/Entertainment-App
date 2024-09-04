@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Trending from "./trending"
 import axios from 'axios'
 import { dataProps } from "./trending"
+import { MediaGrid } from "@/components/mediasGrid"
 
 type all = dataProps
 export default function Dashboard() {
@@ -27,9 +28,14 @@ export default function Dashboard() {
     
     
     return (
-        <Trending
-            data={trending}
-            bookmarked={bookmarked}
-        />
+        <div className="flex flex-col gap-10">
+            <Trending
+                data={trending}
+                bookmarked={bookmarked}
+            />
+            <MediaGrid data={all} bookmarked={bookmarked}
+                header="Recommended for you"
+            />
+        </div>
     )
 }

@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import { Bookmarks } from "@/components/bookmark";
@@ -69,7 +68,7 @@ export default function Trending(
   });
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="flex w-full gap-6 flex-col">
       {heading}
       <div className="flex flex-shrink-0 w-[93%] gap-10 overflow-x-auto no-scrollbar">
         {trendingCarousel}
