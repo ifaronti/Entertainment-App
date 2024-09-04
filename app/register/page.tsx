@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import RegistrationForm from "./registration"
+import axios from 'axios'
 
 export default function Register() {
   const [info, setInfo] = useState({ email: '', password: '', confirmPassword: '' })

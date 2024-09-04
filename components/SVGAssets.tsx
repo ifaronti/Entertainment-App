@@ -49,7 +49,7 @@ export const bookmarkEmptyIcon: navButtonsType = (
   </svg>
 );
 
-export const trendingDot = (
+export const theDot = (
   <svg
     width={3}
     height={3}
