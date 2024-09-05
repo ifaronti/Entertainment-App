@@ -1,5 +1,5 @@
 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-    return <div>Get movies</div>
+    return <div>{children}</div>
 }

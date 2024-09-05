@@ -26,6 +26,7 @@ export type dataProps = {
   isTrending: boolean;
   isBookmarked: boolean;
   title: string;
+  category:string
 };
 
 export default function Trending(
@@ -68,9 +69,9 @@ export default function Trending(
   });
 
   return (
-    <div className="flex w-full gap-6 flex-col">
+    <div className="flex w-full flex-grow-0 flex-shrink-0 gap-6 flex-col">
       {heading}
-      <div className="flex flex-shrink-0 w-[93%] gap-10 overflow-x-auto no-scrollbar">
+      <div className="flex flex-grow-0 flex-shrink-0 w-[98%] gap-10 overflow-x-auto no-scrollbar">
         {trendingCarousel}
       </div>
     </div>

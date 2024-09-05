@@ -21,7 +21,7 @@ export default function SearchForm({
   );
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-shrink-0 flex-row-reverse w-full gap-2">
+    <form onSubmit={handleSubmit} className="flex flex-shrink-0 flex-row-reverse w-[1220px] gap-2">
       <input
         type="text"
         onChange={handleChange}

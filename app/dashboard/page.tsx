@@ -6,7 +6,7 @@ import axios from 'axios'
 import { dataProps } from "./trending"
 import { MediaGrid } from "@/components/mediasGrid"
 
-type all = dataProps
+export type all = dataProps
 export default function Dashboard() {
     const [all, setAll] = useState<all[]>([])
     
@@ -28,7 +28,7 @@ export default function Dashboard() {
     
     
     return (
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
             <Trending
                 data={trending}
                 bookmarked={bookmarked}

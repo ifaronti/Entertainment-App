@@ -2,7 +2,7 @@
 import { NavBar } from "@/components/Navbar";
 import { Metadata } from "next";
 import { Section } from "@/components";
-import { useState } from "react";
+import { useState, createContext } from "react";
 import SearchForm from "./searchForm";
 
 // const metadata: Metadata = {
@@ -26,16 +26,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <Section className="min-h-screen flex-shrink-0 mx-auto justify-center w-full xl:w-[1440px] py-8 flex px-8 gap-7">
-      <NavBar />
-      <div className="w-full flex-shrink-0 relative flex-grow-0">
-        <SearchForm
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
-          searchParam={searchParam}
-        />
-        {children}
-      </div>
-    </Section>
+
+      <Section className="min-h-screen flex-shrink-0 mx-auto justify-center w-full xl:w-[1440px] py-8 flex px-8 gap-7">
+        <NavBar />
+        <div className="w-full flex-shrink-0 relative flex-grow-0">
+          <SearchForm
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            searchParam={searchParam}
+          />
+          {children}
+        </div>
+      </Section>
   );
 }
