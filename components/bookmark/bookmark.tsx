@@ -3,14 +3,8 @@ import {bookmarkFullIcon, bookmarkEmptyIcon} from '../SVGAssets'
 import {useState, useEffect} from 'react'
 
 type bookmarkProps = {
-    item:{
-        title: string,
-        rating: string,
-        category: string,
-        year: number,
-        isTrending: boolean,
-        isBookmarked: boolean,
-    
+    item: {
+        [key:string]:any
     },
     bookmarked: string[],
     addBookmark:()=>void

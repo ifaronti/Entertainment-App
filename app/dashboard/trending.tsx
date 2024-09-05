@@ -4,23 +4,9 @@ import { Bookmarks } from "@/components/bookmark";
 import DetailsText from "@/components/detailsText/detailsText";
 
 export type dataProps = {
-  data: [
-    {
-      thumbnail: {
-        trending: { large: string; small: string };
-        regular: {
-          small: string;
-          medium: string;
-          large: string;
-        };
-      };
-      title: string;
-      rating: string;
-      category: string;
-      year: number;
-      isTrending: boolean;
-      isBookmarked: boolean;
-    }
+  data: [{
+    [key:string]:any
+  }
   ];
   bookmarked: string[];
   isTrending: boolean;

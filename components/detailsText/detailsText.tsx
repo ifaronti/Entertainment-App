@@ -3,12 +3,7 @@ import { movieCategoryIcon, TVSeriesIcon } from "../SVGAssets"
 
 type detailsProps = {
     item: {
-        title: string,
-        rating: string,
-        category: string,
-        year: number,
-        isTrending: boolean,
-        isBookmarked: boolean,
+        [key:string]:any
     },
     titleSize: string,
     pSize:string
