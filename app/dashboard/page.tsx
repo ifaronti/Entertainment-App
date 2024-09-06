@@ -11,10 +11,8 @@ export type all = dataProps;
 export default function Dashboard() {
     const {all} = useContext(dataContext)
 
-  const trending = all.filter((item) => item.isTrending);
-  const bookmarked = all
-    .filter((item) => item.isBookmarked)
-    .map((item) => item.title);
+  const trending = all?.filter((item) => item.isTrending);
+  const bookmarked = all?.filter((item) => item.isBookmarked).map((item) => item.title);
     
   return (
       <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">

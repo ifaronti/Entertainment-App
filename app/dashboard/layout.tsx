@@ -6,6 +6,7 @@ import { useState, createContext, useEffect} from "react";
 import axios from "axios";
 import SearchForm from "./searchForm";
 import { all } from "./page";
+import { useRouter } from "next/navigation";
 
 // const metadata: Metadata = {
 //     title:'Dashboard'
@@ -23,18 +24,24 @@ export const dataContext = createContext<contextProps>(data);
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [searchParam, setSearchParam] = useState("");
   const [all, setAll] = useState<all[]>([])
+  const goTo = useRouter()
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
     const getAll = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/all");
+        const url = process.env.APP_API
+        if (!token || token === null || token === undefined) {
+          return goTo.push('/login')
+        }
+        const { data } = await axios.get(`${url}/all`, {headers:{authorization:'Bearer '+token}});
         setAll(data.data);
       } catch (err: any) {
         console.log(err.message);
       }
     };
     getAll();
-  }, []);
+  }, [goTo]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;

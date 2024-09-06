@@ -2,11 +2,13 @@
 
 import { useState } from "react"
 import RegistrationForm from "./registration"
-import axios from 'axios'
+import { RegisterCall } from "@/components/API-calls/register"
+import { useRouter } from "next/navigation"
 
 export default function Register() {
   const [info, setInfo] = useState({ email: '', password: '', confirmPassword: '' })
   const [errMsg, setErrMsg] = useState<string>("");
+  const goTo = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -18,7 +20,7 @@ export default function Register() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const { password, email, confirmPassword } = info;
 
@@ -30,8 +32,8 @@ export default function Register() {
       setErrMsg("All fields are required");
       return;
     }
-    console.log(info);
-    
+    await RegisterCall(info)
+    goTo.push('/login')
   };
 
   return (
