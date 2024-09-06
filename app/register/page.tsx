@@ -6,7 +6,7 @@ import axios from 'axios'
 
 export default function Register() {
   const [info, setInfo] = useState({ email: '', password: '', confirmPassword: '' })
-  const [errMsg, setErrMsg] = useState("");
+  const [errMsg, setErrMsg] = useState<string>("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

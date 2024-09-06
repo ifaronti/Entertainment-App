@@ -2,7 +2,7 @@
 
 import { useContext } from "react";
 import Trending from "./trending";
-import { dataProps } from "./trending";
+import { dataProps } from "@/components/SVGAssets";
 import { MediaGrid } from "@/components/mediasGrid";
 import { dataContext } from "./layout";
 
@@ -23,6 +23,7 @@ export default function Dashboard() {
           data={all}
           bookmarked={bookmarked}
           header="Recommended for you"
+          addBookmark={()=>console.log('Will make API')}
         />
       </div>
   );

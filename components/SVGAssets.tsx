@@ -60,3 +60,29 @@ export const theDot = (
     <circle opacity="0.5" cx="1.5" cy="1.5" r="1.5" fill="white" />
   </svg>
 );
+
+export type dataProps = {
+  data: [
+    {
+      thumbnail: {
+        trending: { large: string; small: string };
+        regular: {
+          small: string;
+          medium: string;
+          large: string;
+        };
+      };
+      title: string;
+      rating: string;
+      category: string;
+      year: number;
+      isTrending: boolean;
+      isBookmarked: boolean;
+    }
+  ];
+  bookmarked: string[];
+  isTrending: boolean;
+  isBookmarked: boolean;
+  title: string;
+  category:string
+};

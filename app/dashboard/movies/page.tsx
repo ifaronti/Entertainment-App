@@ -14,7 +14,9 @@ export default function Page() {
 
   return (
     <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
-      <MediaGrid data={movies} bookmarked={bookmarked} header="Movies" />
+      <MediaGrid data={movies} bookmarked={bookmarked} header="Movies"
+        addBookmark={()=>console.log('make api call')}
+      />
     </div>
   );
 }

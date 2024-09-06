@@ -2,7 +2,7 @@
 import { NavBar } from "@/components/Navbar";
 import { Metadata } from "next";
 import { Section } from "@/components";
-import { useState, createContext, useEffect, Dispatch, SetStateAction} from "react";
+import { useState, createContext, useEffect} from "react";
 import axios from "axios";
 import SearchForm from "./searchForm";
 import { all } from "./page";

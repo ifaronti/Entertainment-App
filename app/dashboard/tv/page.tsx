@@ -15,6 +15,7 @@ export default function Page() {
         <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
             <MediaGrid data={TV} bookmarked={bookmarked}
                 header="TV Series"
+                addBookmark={()=>console.log('make api call')}
             />
         </div>
     )

@@ -1,16 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavButtons from "./navButtons";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function NavBar() {
-  const [current, setCurrent] = useState("dashboard");
+  const [current, setCurrent] = useState("")
   const gotTo = useRouter();
+
+  useEffect(() => {
+    let localCurrent = localStorage.getItem('page')
+    if (localCurrent !== null || undefined) {
+      return setCurrent(localCurrent)
+    }
+    else {
+      setCurrent('dashboard')
+    }
+
+  },[])
 
   const goToPage = (page: string) => {
     setCurrent(page);
+    localStorage.setItem('page', page)
     gotTo.push("/" + page);
   };
 

@@ -2,26 +2,12 @@
 import Image from "next/image";
 import { Bookmarks } from "@/components/bookmark";
 import DetailsText from "@/components/detailsText/detailsText";
+import { dataProps } from "@/components/SVGAssets";
 
-export type dataProps = {
-  data: [{
-    [key:string]:any
-  }
-  ];
-  bookmarked: string[];
-  isTrending: boolean;
-  isBookmarked: boolean;
-  title: string;
-  category:string
-};
+export default function Trending({ data, bookmarked }: dataProps, addBookmark: () => void){
+  const heading = <h1>Trending</h1>;
 
-export default function Trending(
-  { data, bookmarked }: dataProps,
-  addBookmark: () => void
-) {
-  const heading: JSX.Element = <h1>Trending</h1>;
-
-  const trendingCarousel: JSX.Element[] = data?.map((item, index) => {
+  const trendingCarousel = data?.map((item, index) => {
     return (
       <div
         className="relative flex-shrink-0 rounded-lg h-[230px] w-[470px]"
