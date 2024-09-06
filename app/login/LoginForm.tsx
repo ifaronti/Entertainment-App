@@ -2,7 +2,7 @@ import { Input } from "@/components";
 import classNames from "classnames";
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 
-export interface LoginFormValue {
+export type LoginFormValue = {
   email: string;
   password: string;
 };
