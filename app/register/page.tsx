@@ -4,6 +4,7 @@ import { useState } from "react"
 import RegistrationForm from "./registration"
 import { RegisterCall } from "@/components/API-calls/register"
 import { useRouter } from "next/navigation"
+import { paramsType } from "@/components/API-calls/login"
 
 export default function Register() {
   const [info, setInfo] = useState({ email: '', password: '', confirmPassword: '' })
@@ -18,7 +19,15 @@ export default function Register() {
         [name]: value,
       };
     });
+    setErrMsg('')
   };
+
+  const redirect = (data:paramsType) => {
+    if (!data.success) {
+      return setErrMsg(data)
+    }
+    goTo.push('/login')
+  }
 
   const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -32,8 +41,7 @@ export default function Register() {
       setErrMsg("All fields are required");
       return;
     }
-    await RegisterCall(info)
-    goTo.push('/login')
+    await RegisterCall(info, redirect)
   };
 
   return (
@@ -41,6 +49,7 @@ export default function Register() {
       info={info}
       handleChange={handleChange}
       handleSubmit={handleSubmit}
+      err={errMsg}
     />
   )
 }

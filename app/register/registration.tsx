@@ -8,12 +8,14 @@ export type registrationInfoProps = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   info: { email: string; password: string; confirmPassword: string };
+  err:string
 };
 
 export default function RegistrationForm({
   handleChange,
   handleSubmit,
   info,
+  err
 }: registrationInfoProps) {
   const form = (
       <form onSubmit={handleSubmit} className={registerStyles.form}>
@@ -49,6 +51,7 @@ export default function RegistrationForm({
           <Button variant={ButtonVariants.Primary}>
             Create an account
           </Button>
+          {err && <p className='text-red-600 capitalize mx-auto'>{ err}</p>}
           <Text className={registerStyles.text}>
             <span>Already have an account?</span> <Link href="/login">Login</Link>
           </Text>

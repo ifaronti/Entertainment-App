@@ -6,6 +6,7 @@ import { Button } from "@/components";
 import { ButtonVariants } from "@/components/Button";
 import { loginUser } from "@/components/API-calls/login";
 import { useRouter } from "next/navigation";
+import { paramsType } from "@/components/API-calls/login";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -13,13 +14,21 @@ const Page = () => {
   const [err, setErr] = useState('')
   const goTo = useRouter()
 
+  function redirect(data:paramsType) {
+    if (!data.authorization) {
+      return setErr(data)
+    }
+    localStorage.setItem('token', data.authorization)
+    goTo.push('/dashboard')
+  }
+
   const handleSubmit = async (e:any) => {
     e.preventDefault()
     if (!email || !password) {
       setErr('all fields are required for authentication')
       return
     }
-    await loginUser({email, password}, goTo.push('/dashboard'))
+    await loginUser({email, password}, redirect)
   }
 
   return (
@@ -42,6 +51,7 @@ const Page = () => {
       >
         Login to your account
       </Button>
+      {err && <p className="text-red-600 capitalize mx-auto">{ err}</p>}
     </div>
   );
 };
