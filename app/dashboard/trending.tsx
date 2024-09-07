@@ -4,7 +4,7 @@ import { Bookmarks } from "@/components/bookmark";
 import DetailsText from "@/components/detailsText/detailsText";
 import { dataProps } from "@/components/SVGAssets";
 
-export default function Trending({ data, bookmarked }: dataProps, addBookmark: () => void){
+export default function Trending({ data, bookmarked }: dataProps){
   const heading = <h1>Trending</h1>;
 
   const trendingCarousel = data?.map((item, index) => {
@@ -25,7 +25,6 @@ export default function Trending({ data, bookmarked }: dataProps, addBookmark: (
           <Bookmarks
             item={item}
             bookmarked={bookmarked}
-            addBookmark={() => addBookmark}
           />
         </div>
         

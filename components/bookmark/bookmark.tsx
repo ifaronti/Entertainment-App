@@ -13,20 +13,28 @@ type bookmarkProps = {
     isBookmarked: boolean;
   };
   bookmarked: string[];
-  addBookmark: () => void;
+
 };
 
 export default function Bookmarks({
   bookmarked,
   item,
-  addBookmark,
 }: bookmarkProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
+  const [token, setToken] = useState<string>('')
 
-  const addRemoveBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-    addBookmark();
-  };
+  const addRemoveBookmarks = (title:string) => {
+    if (bookmarked.includes(title)) {
+      deleteBookmarks(title, token)
+      setIsBookmarked(false)
+      return
+    }
+    if (!bookmarked.includes(title)) {
+      addBookmark(title, token)
+      setIsBookmarked(true)
+      return
+    }
+  }
 
   useEffect(() => {
     if (bookmarked.includes(item.title)) {
@@ -36,10 +44,12 @@ export default function Bookmarks({
     }
   }, [bookmarked, item.title]);
 
+  useEffect(()=>{setToken(localStorage.getItem('token'))})
+
   return (
     <p
       className="flex cursor-pointer items-center justify-center"
-      onClick={addRemoveBookmark}
+      onClick={()=>addRemoveBookmarks(item.title)}
     >
       <span className="z-50">
         {isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}

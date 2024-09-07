@@ -7,7 +7,7 @@ import axios from "axios";
 import SearchForm from "./searchForm";
 import { all } from "./page";
 import { useRouter } from "next/navigation";
-import { getBookmarks, deleteBookmarks, addBookmark } from "@/components/API-calls/bookmarks";
+import { getBookmarks } from "@/components/API-calls/bookmarks";
 
 // const metadata: Metadata = {
 //     title:'Dashboard'
@@ -15,33 +15,24 @@ import { getBookmarks, deleteBookmarks, addBookmark } from "@/components/API-cal
 
 type contextProps = {
   all: all[],
-  bookmarks:string[]
+  bookmarks: string[]
 };
 
 const data: contextProps = {
   all: [],
-  bookmarks:[]
+  bookmarks: [],
 };
+
 export const dataContext = createContext<contextProps>(data);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [searchParam, setSearchParam] = useState("");
   const [all, setAll] = useState<all[]>([])
-  const [token, setToken] = useState('')
   const [bookmarks, setBookmarks] = useState<string[]>([])
   const goTo = useRouter()
 
   const handleBookmarks = (data:string[]) => {
     setBookmarks(data)
-  }
-  
-  const addRemoveBookmarks = (title:string) => {
-    if (bookmarks.includes(title)) {
-     return deleteBookmarks(title, token, handleBookmarks)
-    }
-    if (!bookmarks.includes(title)) {
-      addBookmark(title, token, handleBookmarks)
-    }
   }
 
   useEffect(() => {
@@ -55,7 +46,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         const { data } = await axios.get(`${url}/all`, {headers:{authorization:'Bearer '+token}});
         setAll(data.data);
         getBookmarks(token, handleBookmarks)
+
       } catch (err: any) {
+      
       }
     };
     getAll();
