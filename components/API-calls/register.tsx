@@ -1,14 +1,13 @@
 'use client'
 import axios from "axios"
-import { paramsType } from "./login"
-import { RedirectType } from "next/navigation"
+import { redirectsType } from "./login"
 
 type bodyType = {
     email: string,
     password:string
 }
 
-export const RegisterCall = async (body:bodyType, redirect:(params:paramsType)=>RedirectType) => {
+export const RegisterCall = async (body:bodyType, redirect:redirectsType) => {
     try {
         if (!body.email || !body.password) {
             return

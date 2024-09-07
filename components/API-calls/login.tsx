@@ -8,12 +8,11 @@ type requestBody = {
 export type paramsType = {
     success: boolean
     authorization: string
-    message?:string
 } & string
 
-type redirectType = (params:paramsType)=>()=>{}
+export type redirectsType = (params:paramsType)=>void
 
-export const loginUser = async (body: requestBody, redirect: redirectType) => {
+export const loginUser = async (body: requestBody, redirect: redirectsType) => {
     try {
         if (!body.password || !body.email) {
             return
