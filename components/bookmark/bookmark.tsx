@@ -1,6 +1,7 @@
 "use client";
 import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
 import { useState, useEffect } from "react";
+import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
 
 type bookmarkProps = {
   item: {
