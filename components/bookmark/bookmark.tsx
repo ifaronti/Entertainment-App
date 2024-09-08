@@ -34,7 +34,7 @@ export default function Bookmarks({item}: bookmarkProps) {
   }
 
   useEffect(() => {
-    if (bookmarks.includes(item.title)) {
+    if (bookmarks?.includes(item.title)) {
       setIsBookmarked(true);
     } else {
       setIsBookmarked(false);
