@@ -13,25 +13,24 @@ type bookmarkProps = {
     isTrending: boolean;
     isBookmarked: boolean;
   };
-
 };
 
-export default function Bookmarks({item}: bookmarkProps) {
+export default function Bookmarks({ item }: bookmarkProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const { bookmarks, token, handleBookmarks } = useContext(dataContext)  
+  const { bookmarks, token, handleBookmarks } = useContext(dataContext);
 
-  const addRemoveBookmarks = (title:string) => {
-    if (bookmarks.includes(title)) {
-      deleteBookmarks(title, token, handleBookmarks)
-      setIsBookmarked(false)
-      return
+  const addRemoveBookmarks = (title: string) => {
+    if (bookmarks?.includes(title)) {
+      deleteBookmarks(title, token, handleBookmarks);
+      setIsBookmarked(false);
+      return;
     }
-    if (!bookmarks.includes(title)) {
-      addBookmark(title, token, handleBookmarks)
-      setIsBookmarked(true)
-      return
+    if (!bookmarks?.includes(title)) {
+      addBookmark(title, token, handleBookmarks);
+      setIsBookmarked(true);
+      return;
     }
-  }
+  };
 
   useEffect(() => {
     if (bookmarks?.includes(item.title)) {
@@ -44,7 +43,7 @@ export default function Bookmarks({item}: bookmarkProps) {
   return (
     <p
       className="flex cursor-pointer items-center justify-center"
-      onClick={()=>addRemoveBookmarks(item.title)}
+      onClick={() => addRemoveBookmarks(item.title)}
     >
       <span className="z-50">
         {isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}
