@@ -9,9 +9,6 @@ import { all } from "./page";
 import { useRouter } from "next/navigation";
 import { getBookmarks } from "@/components/API-calls/bookmarks";
 
-// const metadata: Metadata = {
-//     title:'Dashboard'
-// }
 
 type contextType = {
   all: all[],
