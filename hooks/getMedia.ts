@@ -12,19 +12,38 @@ export type Media = {
   };
   title: string;
   rating: string;
-  category: string;
+  category: MediaCategories;
   year: number;
   isTrending: boolean;
   isBookmarked: boolean;
 };
 
+export enum MediaCategories {
+  MOVIE = 'Movie',
+  TV_SERIES = 'TV Series'
+}
+
 type GetMediaResponse = {
   data: Media[];
 };
 
-const useGetMedia = () =>
-  useSWR(`/all`, () =>
-    ApiClient.get<GetMediaResponse>(`/all`).then((res) => res.data)
+export type GetMediaRequest = {
+  category: MediaCategories
+}
+
+const useGetMedia = (params?: GetMediaRequest) => {
+  let url = `/all`
+
+  if(params) {
+    const searchParams = new URLSearchParams(params)
+
+    url = `${url}?${searchParams.toString()}`;
+  }
+  
+  return useSWR(`/all`, () => 
+    ApiClient.get<GetMediaResponse>(url).then((res) => res.data)
   );
+}
+  
 
 export default useGetMedia;
