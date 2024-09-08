@@ -1,18 +1,17 @@
 "use client";
 
-import { useContext } from "react";
 import { MediaGrid } from "@/components/mediasGrid";
-import { dataContext } from "../layout";
+import useGetMedia, { MediaCategories } from "@/hooks/getMedia";
 
 export default function Page() {
-  const { all } = useContext(dataContext);
-
-  const movies = all.filter((item) => item.category === "Movie");
+  const { data: movies, isLoading } = useGetMedia({
+    category: MediaCategories.MOVIE,
+  });
 
   return (
     <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
-      <MediaGrid data={movies} header="Movies"
-      />
+      {isLoading && <p>Loading</p>}
+      {movies && <MediaGrid data={movies.data} header="Movies" />}
     </div>
   );
 }

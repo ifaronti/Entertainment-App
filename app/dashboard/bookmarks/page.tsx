@@ -1,22 +1,30 @@
+"use client";
 
-'use client'
-
-import { useContext } from "react"
-import { MediaGrid } from "@/components/mediasGrid"
-import { all } from "../page"
-import { dataContext } from "../layout"
+import { MediaGrid } from "@/components/mediasGrid";
+import useGetBookmarks from "@/hooks/getBookmarks";
+import { MediaCategories } from "@/hooks/getMedia";
 
 export default function Page() {
-    const { all, bookmarks } = useContext(dataContext)    
-    
-    const movies:all[] = all.filter((item) => item.category === 'Movie' && bookmarks?.includes(item.title))
-    const TV:all[] = all.filter((item) => item.category === 'TV Series' && bookmarks?.includes(item.title))
-    
-    return (
-        <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
-            <MediaGrid data={movies} header="Bookmarked Movies"/>
-            
-            <MediaGrid data={TV} header="Bookmarked TV Series"/>
-        </div>
-    )
+  const { data: bookmarks, isLoading } = useGetBookmarks();
+
+  const movies = bookmarks?.data?.filter(
+    (item) => item.category === MediaCategories.MOVIE
+  );
+  const tvSeries = bookmarks?.data?.filter(
+    (item) => item.category === MediaCategories.TV_SERIES
+  );
+
+  return (
+    <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
+      {isLoading && <p>Loading</p>}
+      {!isLoading && (
+        <>
+          {movies && <MediaGrid data={movies} header="Bookmarked Movies" />}
+          {tvSeries && (
+            <MediaGrid data={tvSeries} header="Bookmarked TV Series" />
+          )}
+        </>
+      )}
+    </div>
+  );
 }

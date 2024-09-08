@@ -3,48 +3,33 @@ import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
 import { useState, useEffect, useContext } from "react";
 import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
 import { dataContext } from "@/app/dashboard/layout";
+import { Media } from "@/hooks";
 
 type bookmarkProps = {
-  item: {
-    title: string;
-    rating: string;
-    category: string;
-    year: number;
-    isTrending: boolean;
-    isBookmarked: boolean;
-  };
-
+  item: Media;
 };
 
-export default function Bookmarks({item}: bookmarkProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const { bookmarks, token, handleBookmarks } = useContext(dataContext)  
+export default function Bookmarks({ item }: bookmarkProps) {
+  const [isBookmarked, setIsBookmarked] = useState(item.isBookmarked);
+  const { bookmarks, token, handleBookmarks } = useContext(dataContext);
 
-  const addRemoveBookmarks = (title:string) => {
-    if (bookmarks.includes(title)) {
-      deleteBookmarks(title, token, handleBookmarks)
-      setIsBookmarked(false)
-      return
-    }
-    if (!bookmarks.includes(title)) {
-      addBookmark(title, token, handleBookmarks)
-      setIsBookmarked(true)
-      return
-    }
-  }
-
-  useEffect(() => {
-    if (bookmarks.includes(item.title)) {
-      setIsBookmarked(true);
-    } else {
+  const addRemoveBookmarks = (title: string) => {
+    if (bookmarks?.includes(title)) {
+      deleteBookmarks(title, token, handleBookmarks);
       setIsBookmarked(false);
+      return;
     }
-  }, [bookmarks, item.title]);
+    if (!bookmarks?.includes(title)) {
+      addBookmark(title, token, handleBookmarks);
+      setIsBookmarked(true);
+      return;
+    }
+  };
 
   return (
     <p
       className="flex cursor-pointer items-center justify-center"
-      onClick={()=>addRemoveBookmarks(item.title)}
+      onClick={() => addRemoveBookmarks(item.title)}
     >
       <span className="z-50">
         {isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}

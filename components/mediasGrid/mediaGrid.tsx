@@ -1,10 +1,10 @@
 import { DetailsText } from "../detailsText";
 import { Bookmarks } from "../bookmark";
-import { dataProps } from "../SVGAssets";
 import Image from "next/image";
+import { Media } from "@/hooks";
 
 type gridProps = {
-  data: dataProps["data"];
+  data: Media[];
   header: string;
 };
 
