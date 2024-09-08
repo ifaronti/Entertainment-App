@@ -3,20 +3,14 @@ import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
 import { useState, useEffect, useContext } from "react";
 import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
 import { dataContext } from "@/app/dashboard/layout";
+import { Media } from "@/hooks";
 
 type bookmarkProps = {
-  item: {
-    title: string;
-    rating: string;
-    category: string;
-    year: number;
-    isTrending: boolean;
-    isBookmarked: boolean;
-  };
+  item: Media;
 };
 
 export default function Bookmarks({ item }: bookmarkProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [isBookmarked, setIsBookmarked] = useState(item.isBookmarked);
   const { bookmarks, token, handleBookmarks } = useContext(dataContext);
 
   const addRemoveBookmarks = (title: string) => {
@@ -31,14 +25,6 @@ export default function Bookmarks({ item }: bookmarkProps) {
       return;
     }
   };
-
-  useEffect(() => {
-    if (bookmarks?.includes(item.title)) {
-      setIsBookmarked(true);
-    } else {
-      setIsBookmarked(false);
-    }
-  }, [bookmarks, item.title]);
 
   return (
     <p

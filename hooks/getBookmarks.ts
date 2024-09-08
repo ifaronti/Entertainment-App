@@ -1,10 +1,9 @@
 import ApiClient from "@/lib/axios";
 import useSWR from "swr";
+import { Media } from "./getMedia";
 
 type GetBookmarksResponse = {
-  data: {
-    bookmarks: string[];
-  };
+  data: Media[];
 };
 
 export type GetBookmarksRequest = {};

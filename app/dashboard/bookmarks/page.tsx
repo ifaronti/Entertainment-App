@@ -2,26 +2,22 @@
 
 import { MediaGrid } from "@/components/mediasGrid";
 import useGetBookmarks from "@/hooks/getBookmarks";
-import useGetMedia from "@/hooks/getMedia";
+import { MediaCategories } from "@/hooks/getMedia";
 
 export default function Page() {
-  const { data: all, isLoading: isMediaLoading } = useGetMedia();
   const { data: bookmarks, isLoading } = useGetBookmarks();
 
-  const showLoader = isMediaLoading || isLoading;
-
-  const movies = all?.data?.filter(
-    (item) => item.category === "Movie" && bookmarks?.data?.bookmarks?.includes(item.title)
+  const movies = bookmarks?.data?.filter(
+    (item) => item.category === MediaCategories.MOVIE
   );
-  const tvSeries = all?.data?.filter(
-    (item) =>
-      item.category === "TV Series" && bookmarks?.data?.bookmarks?.includes(item.title)
+  const tvSeries = bookmarks?.data?.filter(
+    (item) => item.category === MediaCategories.TV_SERIES
   );
 
   return (
     <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
-      {showLoader && <p>Loading</p>}
-      {!showLoader && (
+      {isLoading && <p>Loading</p>}
+      {!isLoading && (
         <>
           {movies && <MediaGrid data={movies} header="Bookmarked Movies" />}
           {tvSeries && (
