@@ -18,7 +18,13 @@ export type Media = {
   isBookmarked: boolean;
 };
 
+type GetMediaResponse = {
+  data: Media[];
+};
+
 const useGetMedia = () =>
-  useSWR(`/all`, () => ApiClient.get<Media[]>(`/all`).then((res) => res.data));
+  useSWR(`/all`, () =>
+    ApiClient.get<GetMediaResponse>(`/all`).then((res) => res.data)
+  );
 
 export default useGetMedia;
