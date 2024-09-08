@@ -1,21 +1,14 @@
 import { DetailsText } from "../detailsText";
 import { Bookmarks } from "../bookmark";
-import { dataProps } from "@/app/dashboard/trending";
+import { dataProps } from "../SVGAssets";
 import Image from "next/image";
 
 type gridProps = {
   data: dataProps["data"];
-  bookmarked: string[];
   header: string;
-  addBookmark: () => void;
 };
 
-export default function MediaGrid({
-  data,
-  bookmarked,
-  header,
-  addBookmark,
-}: gridProps) {
+export default function MediaGrid({data, header,}: gridProps) {
   const heading = <h2>{header}</h2>;
 
   const mediaGrids: JSX.Element[] = data?.map((item, index) => {
@@ -32,8 +25,6 @@ export default function MediaGrid({
           <span className="absolute z-50 top-4 right-4">
             <Bookmarks
               item={item}
-              bookmarked={bookmarked}
-              addBookmark={() => addBookmark}
             />
           </span>
         </div>

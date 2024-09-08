@@ -1,7 +1,8 @@
 "use client";
 import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
+import { dataContext } from "@/app/dashboard/layout";
 
 type bookmarkProps = {
   item: {
@@ -12,39 +13,33 @@ type bookmarkProps = {
     isTrending: boolean;
     isBookmarked: boolean;
   };
-  bookmarked: string[];
 
 };
 
-export default function Bookmarks({
-  bookmarked,
-  item,
-}: bookmarkProps) {
+export default function Bookmarks({item}: bookmarkProps) {
   const [isBookmarked, setIsBookmarked] = useState(false);
-  const [token, setToken] = useState<string>('')
+  const { bookmarks, token, handleBookmarks } = useContext(dataContext)  
 
   const addRemoveBookmarks = (title:string) => {
-    if (bookmarked.includes(title)) {
-      deleteBookmarks(title, token)
+    if (bookmarks.includes(title)) {
+      deleteBookmarks(title, token, handleBookmarks)
       setIsBookmarked(false)
       return
     }
-    if (!bookmarked.includes(title)) {
-      addBookmark(title, token)
+    if (!bookmarks.includes(title)) {
+      addBookmark(title, token, handleBookmarks)
       setIsBookmarked(true)
       return
     }
   }
 
   useEffect(() => {
-    if (bookmarked.includes(item.title)) {
+    if (bookmarks.includes(item.title)) {
       setIsBookmarked(true);
     } else {
       setIsBookmarked(false);
     }
-  }, [bookmarked, item.title]);
-
-  useEffect(()=>{setToken(localStorage.getItem('token'))})
+  }, [bookmarks, item.title]);
 
   return (
     <p

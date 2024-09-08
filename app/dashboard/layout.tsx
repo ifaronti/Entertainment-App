@@ -13,22 +13,27 @@ import { getBookmarks } from "@/components/API-calls/bookmarks";
 //     title:'Dashboard'
 // }
 
-type contextProps = {
+type contextType = {
   all: all[],
-  bookmarks: string[]
+  bookmarks: string[],
+  handleBookmarks: (data: string[]) => void,
+  token:string
 };
 
-const data: contextProps = {
+const data: contextType = {
   all: [],
   bookmarks: [],
+  handleBookmarks: (data: string[]) => { },
+  token:''
 };
 
-export const dataContext = createContext<contextProps>(data);
+export const dataContext = createContext<contextType>(data);
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [searchParam, setSearchParam] = useState("");
   const [all, setAll] = useState<all[]>([])
   const [bookmarks, setBookmarks] = useState<string[]>([])
+  const [token, setToken] = useState('')
   const goTo = useRouter()
 
   const handleBookmarks = (data:string[]) => {
@@ -46,6 +51,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         const { data } = await axios.get(`${url}/all`, {headers:{authorization:'Bearer '+token}});
         setAll(data.data);
         getBookmarks(token, handleBookmarks)
+        setToken(token)
 
       } catch (err: any) {
       
@@ -69,7 +75,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <dataContext.Provider value={{all, bookmarks}}>
+    <dataContext.Provider value={{all, handleBookmarks, token, bookmarks}}>
       <Section className="min-h-screen flex-shrink-0 mx-auto justify-center w-full xl:w-[1440px] py-8 flex px-8 gap-7">
         <NavBar />
         <div className="w-full flex-shrink-0 relative flex-grow-0">
