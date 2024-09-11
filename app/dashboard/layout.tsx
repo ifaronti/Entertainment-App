@@ -16,7 +16,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     if (!token || token === null || token === undefined) {
       return goTo.push('/login')
     }
-  }, []);
+  }, [goTo]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;

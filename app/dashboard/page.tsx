@@ -2,10 +2,7 @@
 
 import Trending from "./trending";
 import { MediaGrid } from "@/components/mediasGrid";
-import { mediaType } from "@/components/SVGAssets";
 import useGetMedia from "@/hooks/getMedia";
-
-export type all = mediaType[];
 
 export default function Dashboard() {
     const {data:all} = useGetMedia()
