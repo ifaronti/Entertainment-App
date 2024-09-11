@@ -3,7 +3,6 @@
 import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
 import { useState, useEffect} from "react";
 import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
-<<<<<<< HEAD
 import { mediaType } from "../SVGAssets";
 import useGetBookmarks from "@/hooks/getBookmarks";
 
@@ -36,32 +35,6 @@ export default function Bookmarks({item}: bookmarkProps) {
     }
     setToken(localStorage.getItem('token'))
   }, [bookmarks, item])
-=======
-import { dataContext } from "@/app/dashboard/layout";
-import { Media } from "@/hooks";
-
-type bookmarkProps = {
-  item: Media;
-};
-
-export default function Bookmarks({ item }: bookmarkProps) {
-  const [isBookmarked, setIsBookmarked] = useState(item.isBookmarked);
-  const { bookmarks, token, handleBookmarks } = useContext(dataContext);
-
-  const addRemoveBookmarks = (title: string) => {
-    if (bookmarks?.includes(title)) {
-      deleteBookmarks(title, token, handleBookmarks);
-      setIsBookmarked(false);
-      return;
-    }
-    if (!bookmarks?.includes(title)) {
-      addBookmark(title, token, handleBookmarks);
-      setIsBookmarked(true);
-      return;
-    }
-  };
->>>>>>> e1af1bcb863e4b3ddf029083de0a0b533f3793c4
-
   return (
     <p
       className="flex cursor-pointer items-center justify-center"

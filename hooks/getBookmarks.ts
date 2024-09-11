@@ -1,28 +1,14 @@
-<<<<<<< HEAD
+
 import callClient from "@/lib/axios";
 import useSWR from "swr";
-import { getMediaResponse } from "./getMedia";
+import { mediaType } from "@/components/SVGAssets";
 
 export type getBookmarksRequest = {
   title?: string;
 };
 
-const useGetBookmarks = () => {
-  let url = "/bookmarks";
-
-  return useSWR("/bookmarks", () =>
-    callClient.get<getMediaResponse>(url).then((res) => res.data)
-  );
-};
-
-export default useGetBookmarks;
-=======
-import ApiClient from "@/lib/axios";
-import useSWR from "swr";
-import { Media } from "./getMedia";
-
 type GetBookmarksResponse = {
-  data: Media[];
+  data: mediaType[];
 };
 
 export type GetBookmarksRequest = {};
@@ -37,9 +23,8 @@ const useGetBookmarks = (params?: GetBookmarksRequest) => {
   }
 
   return useSWR(`/bookmarks`, () =>
-    ApiClient.get<GetBookmarksResponse>(url).then((res) => res.data)
+    callClient.get<GetBookmarksResponse>(url).then((res) => res.data)
   );
 };
 
 export default useGetBookmarks;
->>>>>>> e1af1bcb863e4b3ddf029083de0a0b533f3793c4
