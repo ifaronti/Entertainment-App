@@ -6,9 +6,6 @@ import { useState, useEffect} from "react";
 import SearchForm from "./searchForm";
 import { useRouter } from "next/navigation";
 
-// const metadata: Metadata = {
-//     title:'Dashboard'
-// }
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const [searchParam, setSearchParam] = useState("");

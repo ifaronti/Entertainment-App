@@ -1,10 +1,18 @@
 import { DetailsText } from "../detailsText";
 import { Bookmarks } from "../bookmark";
+<<<<<<< HEAD
 import { mediaType } from "../SVGAssets";
+=======
+>>>>>>> e1af1bcb863e4b3ddf029083de0a0b533f3793c4
 import Image from "next/image";
+import { Media } from "@/hooks";
 
 type gridProps = {
+<<<<<<< HEAD
   data: mediaType[]|undefined
+=======
+  data: Media[];
+>>>>>>> e1af1bcb863e4b3ddf029083de0a0b533f3793c4
   header: string;
 };
 
