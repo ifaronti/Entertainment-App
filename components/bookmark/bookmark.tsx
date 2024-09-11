@@ -1,45 +1,40 @@
 "use client";
+
 import { bookmarkFullIcon, bookmarkEmptyIcon } from "../SVGAssets";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect} from "react";
 import { deleteBookmarks, addBookmark } from "../API-calls/bookmarks";
-import { dataContext } from "@/app/dashboard/layout";
+import { mediaType } from "../SVGAssets";
+import useGetBookmarks from "@/hooks/getBookmarks";
 
-type bookmarkProps = {
-  item: {
-    title: string;
-    rating: string;
-    category: string;
-    year: number;
-    isTrending: boolean;
-    isBookmarked: boolean;
-  };
-
+export type bookmarkProps = {
+  item: mediaType
 };
 
 export default function Bookmarks({item}: bookmarkProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const { bookmarks, token, handleBookmarks } = useContext(dataContext)  
-
+  const [isBookmarked, setIsBookmarked] = useState(item.isBookmarked);
+  const [token, setToken] = useState<string | undefined | null>('')
+  const { data: bookmarks, mutate } = useGetBookmarks()
+   
   const addRemoveBookmarks = (title:string) => {
-    if (bookmarks.includes(title)) {
-      deleteBookmarks(title, token, handleBookmarks)
+    if (bookmarks?.data?.some(media => media.title === title)){
       setIsBookmarked(false)
-      return
+      deleteBookmarks(title, token, mutate)
     }
-    if (!bookmarks.includes(title)) {
-      addBookmark(title, token, handleBookmarks)
+    else {
       setIsBookmarked(true)
-      return
+      addBookmark(title, token, mutate)
     }
   }
 
   useEffect(() => {
-    if (bookmarks.includes(item.title)) {
-      setIsBookmarked(true);
-    } else {
-      setIsBookmarked(false);
+    if (bookmarks?.data?.some(media => media.title === item.title)) {
+       setIsBookmarked(true)
     }
-  }, [bookmarks, item.title]);
+    else {
+       setIsBookmarked(false)
+    }
+    setToken(localStorage.getItem('token'))
+  }, [bookmarks, item])
 
   return (
     <p

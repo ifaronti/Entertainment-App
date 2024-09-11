@@ -1,17 +1,17 @@
 import { DetailsText } from "../detailsText";
 import { Bookmarks } from "../bookmark";
-import { dataProps } from "../SVGAssets";
+import { mediaType } from "../SVGAssets";
 import Image from "next/image";
 
 type gridProps = {
-  data: dataProps["data"];
+  data: mediaType[]|undefined
   header: string;
 };
 
 export default function MediaGrid({data, header,}: gridProps) {
   const heading = <h2>{header}</h2>;
 
-  const mediaGrids: JSX.Element[] = data?.map((item, index) => {
+  const mediaGrids = data?.map((item, index) => {
     return (
       <div key={index + 1} className="w-[280px] h-[226px] relative">
         <div className="relative">

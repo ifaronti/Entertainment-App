@@ -1,22 +1,26 @@
-
 'use client'
 
-import { useContext } from "react"
 import { MediaGrid } from "@/components/mediasGrid"
-import { all } from "../page"
-import { dataContext } from "../layout"
+import { mediaType } from "@/components/SVGAssets"
+import useGetBookmarks from "@/hooks/getBookmarks"
 
-export default function Page() {
-    const { all, bookmarks } = useContext(dataContext)    
+export default function Page() {  
+    const { data: bookmarks, isLoading } = useGetBookmarks()
     
-    const movies:all[] = all.filter((item) => item.category === 'Movie' && bookmarks?.includes(item.title))
-    const TV:all[] = all.filter((item) => item.category === 'TV Series' && bookmarks?.includes(item.title))
+    const movies:mediaType[] = bookmarks?.data?.filter((item) => item.category === 'Movie') || []
+    const TV:mediaType[] = bookmarks?.data?.filter((item) => item.category === 'TV Series') || []
     
     return (
         <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
-            <MediaGrid data={movies} header="Bookmarked Movies"/>
-            
-            <MediaGrid data={TV} header="Bookmarked TV Series"/>
+            {
+                isLoading ? <p>Loading...</p>
+                :
+                <>
+                    {movies[0] && <MediaGrid data={movies} header="Bookmarked Movies"/>}
+                
+                    {TV[0] && <MediaGrid data={TV} header="Bookmarked TV Series" />}
+                </>
+            }
         </div>
     )
 }

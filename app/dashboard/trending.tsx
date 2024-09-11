@@ -2,9 +2,12 @@
 import Image from "next/image";
 import { Bookmarks } from "@/components/bookmark";
 import DetailsText from "@/components/detailsText/detailsText";
-import { dataProps } from "@/components/SVGAssets";
+import { mediaType } from "@/components/SVGAssets";
 
-export default function Trending({ data, bookmarked }: dataProps){
+type trending = {
+  data:mediaType[]|undefined
+}
+export default function Trending({ data}: trending){
   const heading = <h1>Trending</h1>;
 
   const trendingCarousel = data?.map((item, index) => {
@@ -24,7 +27,6 @@ export default function Trending({ data, bookmarked }: dataProps){
         <div className="absolute top-4 right-6 flex items-center justify-center">
           <Bookmarks
             item={item}
-            bookmarked={bookmarked}
           />
         </div>
         

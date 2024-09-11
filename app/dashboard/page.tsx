@@ -1,23 +1,22 @@
 "use client";
 
-import { useContext } from "react";
 import Trending from "./trending";
-import { dataProps } from "@/components/SVGAssets";
 import { MediaGrid } from "@/components/mediasGrid";
-import { dataContext } from "./layout";
+import { mediaType } from "@/components/SVGAssets";
+import useGetMedia from "@/hooks/getMedia";
 
-export type all = dataProps;
+export type all = mediaType[];
 
 export default function Dashboard() {
-    const {all} = useContext(dataContext)
+    const {data:all} = useGetMedia()
 
-  const trending = all?.filter((item) => item.isTrending);
+  const trending = all?.data?.filter((item) => item.isTrending);
     
   return (
       <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
         <Trending data={trending}  />
         <MediaGrid
-          data={all}
+          data={all?.data}
           header="Recommended for you"
         />
       </div>

@@ -1,10 +1,8 @@
-import { theDot } from "../SVGAssets"
+import { mediaType, theDot } from "../SVGAssets"
 import { movieCategoryIcon, TVSeriesIcon } from "../SVGAssets"
 
 type detailsProps = {
-    item: {
-        [key:string]:any
-    },
+    item: mediaType
     titleSize: string,
     pSize:string
 }

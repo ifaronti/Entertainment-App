@@ -61,9 +61,7 @@ export const theDot = (
   </svg>
 );
 
-export type dataProps = {
-  data: [
-    {
+export type mediaType = {
       thumbnail: {
         trending: { large: string; small: string };
         regular: {
@@ -78,11 +76,4 @@ export type dataProps = {
       year: number;
       isTrending: boolean;
       isBookmarked: boolean;
-    }
-  ];
-  bookmarked: string[];
-  isTrending: boolean;
-  isBookmarked: boolean;
-  title: string;
-  category:string
 };
