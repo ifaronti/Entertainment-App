@@ -9,7 +9,7 @@ type detailsForms = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   details: {
     title: string;
-    year: number;
+    year: number|string;
     rating: string;
     category: string;
     image: any;
