@@ -1,15 +1,14 @@
 "client component";
 import { registerStyles } from "../register/style";
 import Button, { ButtonVariants } from "@/components/Button/Button";
+import { event } from "../genAI/imageRequestForm";
 
-type detailsForms = {
-  handleChange: (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => void;
+export type detailsForms = {
+  handleChange: (e: event) => void;
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   details: {
     title: string;
-    year: number|string;
+    year: number | string;
     rating: string;
     category: string;
     image: any;
@@ -75,7 +74,7 @@ export default function UploadDetails({
         type="file"
         name="image"
         id="image"
-        className={`${registerStyles.input} pb-6`}
+        className={`${registerStyles.input}`}
         accept="image/*"
         onChange={handleChange}
       />
