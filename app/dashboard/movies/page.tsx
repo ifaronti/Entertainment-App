@@ -15,7 +15,7 @@ export default function Page() {
   },[mutate])
 
   return (
-    <div className="flex flex-col gap-10 flex-grow-0 flex-shrink-0">
+    <div className="flex flex-col mt-7 flex-grow-0 flex-shrink-0">
       {
         isLoading ? <p>Loading...</p>
         :

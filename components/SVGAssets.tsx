@@ -62,18 +62,19 @@ export const theDot = (
 );
 
 export type mediaType = {
-      thumbnail: {
-        trending: { large: string; small: string };
-        regular: {
-          small: string;
-          medium: string;
-          large: string;
-        };
-      };
-      title: string;
-      rating: string;
-      category: string;
-      year: number;
-      isTrending: boolean;
-      isBookmarked: boolean;
+  thumbnail: {
+    trending: { large: string; small: string };
+    regular: {
+      small: string;
+      medium: string;
+      large: string;
+    };
+  };
+  title: string;
+  rating: string;
+  category: string;
+  year: number;
+  isTrending: boolean;
+  isBookmarked: boolean;
+  isDeletable: boolean;
 };

@@ -12,7 +12,7 @@ export default function Trending({ data}: trending){
   const trendingCarousel = data?.map((item, index) => {
     return (
       <div
-        className="relative flex-shrink-0 rounded-lg h-[230px] w-[470px]"
+        className="relative flex-shrink-0 rounded-lg h-[140px] w-[220px] md:h-[230px] md:w-[470px]"
         key={index + 1}
       >
         <Image
@@ -20,18 +20,18 @@ export default function Trending({ data}: trending){
           width={470}
           height={230}
           alt={"trending" + (index + 1)}
-          className="absolute rounded-lg flex-shrink-0"
+          className="absolute h-[140px] w-[220px] md:h-[230px] md:w-[470px] rounded-lg flex-shrink-0"
         />
 
         <div className="absolute top-4 right-6 flex items-center justify-center">
           <Bookmarks item={item} />
         </div>
 
-        <div className="absolute left-6 bottom-6">
+        <div className="absolute left-4 bottom-4 md:left-6 md:bottom-6">
           <DetailsText
             item={item}
-            pSize={"text-[.9375rem]"}
-            titleSize={"text-2xl"}
+            pSize={"md:text-[.9375rem] text-xs"}
+            titleSize={"md:text-2xl text-[.9375rem]"}
           />
         </div>
       </div>
@@ -39,9 +39,9 @@ export default function Trending({ data}: trending){
   });
 
   return (
-    <div className="flex w-full flex-grow-0 flex-shrink-0 gap-6 flex-col">
+    <div className="flex w-full pl-4 md:pl-8 2xl:pl-[unset] flex-grow-0 flex-shrink-0 gap-6 flex-col">
       {heading}
-      <div className="flex flex-grow-0 flex-shrink-0 w-[98%] gap-10 overflow-x-auto no-scrollbar">
+      <div className="flex flex-grow-0 flex-shrink-0 w-[98%] gap-4 md:gap-10 overflow-x-auto no-scrollbar">
         {trendingCarousel}
       </div>
     </div>

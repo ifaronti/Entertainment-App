@@ -6,7 +6,7 @@ export default function UploadorDelete({ deleteImage }: deleteProp) {
   return (
     <div className="flex gap-2 items-center mx-auto">
       <Link className="text-[#FC4747]" href="/upload">
-        Upload
+        upload
       </Link>
       <p className="text-white">or</p>
       <p

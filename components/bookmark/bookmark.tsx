@@ -35,12 +35,13 @@ export default function Bookmarks({item}: bookmarkProps) {
     }
     setToken(localStorage.getItem('token'))
   }, [bookmarks, item])
+  
   return (
     <p
       className="flex cursor-pointer items-center justify-center"
       onClick={() => addRemoveBookmarks(item.title)}
     >
-      <span className="z-50">
+      <span className="z-40">
         {isBookmarked ? bookmarkFullIcon : bookmarkEmptyIcon}
       </span>
       <span className="flex-shrink-0 absolute rounded-[100%] w-8 h-8 opacity-[0.5006] bg-[#10141e]"></span>

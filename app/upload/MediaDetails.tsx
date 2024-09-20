@@ -11,7 +11,8 @@ export type detailsForms = {
     year: number | string;
     rating: string;
     category: string;
-    image: any;
+    image:any
+    isAI:boolean
   };
   errorMsg: string;
 };
@@ -33,6 +34,7 @@ export default function UploadDetails({
         type="text"
         onChange={handleChange}
         value={details.title}
+        maxLength={15}
         name="title"
         placeholder="Movie or TV Series title"
         className={registerStyles.input}
@@ -43,6 +45,7 @@ export default function UploadDetails({
         onChange={handleChange}
         value={details.year}
         name="year"
+        maxLength={4}
         className={`${registerStyles.input}`}
         placeholder="Year Of Release"
       />
@@ -70,14 +73,30 @@ export default function UploadDetails({
         <option value="TV Series">TV Series</option>
       </select>
 
-      <input
+      {!details.isAI &&<input
         type="file"
         name="image"
         id="image"
         className={`${registerStyles.input}`}
         accept="image/*"
         onChange={handleChange}
-      />
+      />}
+
+      {details.isAI && <input
+        type="text"
+        value={details.image}
+        name="image"
+        className={`${registerStyles.input}`}
+        readOnly
+      />}
+
+      {details.isAI && <input
+        type="text"
+        value={'true'}
+        name="isAI"
+        className={`${registerStyles.input}`}
+        readOnly
+      />}
       <Button className="mb mb-6" variant={ButtonVariants.Primary}>
         Upload Details
       </Button>

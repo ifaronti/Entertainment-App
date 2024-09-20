@@ -7,7 +7,7 @@ export type responseType = {
   success: boolean;
   message: string;
   image: string;
-};
+}
 
 export type event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
 export type formEvent = React.FormEvent<HTMLFormElement>;
@@ -18,7 +18,6 @@ export type detailsForms = {
   details: {
     type: string;
     text: string;
-    AI: boolean;
   };
   err: string;
 };

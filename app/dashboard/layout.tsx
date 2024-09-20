@@ -32,9 +32,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   return (
-      <Section className="min-h-screen flex-shrink-0 mx-auto justify-center w-full xl:w-[1440px] py-8 flex px-8 gap-7">
+    <Section className="min-h-screen flex justify-center flex-col 2xl:flex-row flex-shrink-0 gap-7 mx-auto w-full 2xl:w-[1440px] pt-8 py-8">
+      <div className="w-full flex relative h-14 md:h-[72px] 2xl:h-[833px] 2xl:w-24">
         <NavBar />
-        <div className="w-full flex-shrink-0 relative flex-grow-0">
+      </div>
+        <div className="w-full 2xl:pt-8 flex-shrink-0 relative flex-grow-0">
           <SearchForm
             handleChange={handleChange}
             handleSubmit={handleSubmit}
