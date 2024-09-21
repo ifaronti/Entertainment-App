@@ -17,10 +17,6 @@ export default function Dashboard() {
   useEffect(() => {
     mutate()
   }, [search, mutate])
-  
-  console.log(all);
-  
-
 
   let result = `Found ${all?.data?.length} result(s) for ${search}` 
   return (
