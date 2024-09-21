@@ -2,23 +2,29 @@
 import useGetMedia from "@/hooks/getMedia"
 import { MediaGrid } from "@/components/mediasGrid"
 import { theCategories } from "@/hooks/getMedia"
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
+import { allContext } from "../layout";
 
 export default function Page() {
+    const { search } = useContext(allContext)
+    
     const { data: TV, isLoading, mutate } = useGetMedia({
-        category:theCategories.TV
+        category: theCategories.TV,
+        title:search? search:'skip'
     })
 
     useEffect(() => {
         mutate()
-    },[mutate])
+    }, [mutate, search])
+    
+    let result = `Found ${TV?.data?.length} result(s) for ${search}` 
     
     return (
         <div className="flex flex-col mt-7 gap-10 flex-grow-0 flex-shrink-0">
             {
                 isLoading ? <p>Loading...</p>
                 :
-                <MediaGrid data={TV?.data} header="TV Series" />
+                <MediaGrid data={TV?.data} header={search? result:"TV Series"} />
             }
         </div>
     )

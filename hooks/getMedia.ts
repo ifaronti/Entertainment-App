@@ -5,17 +5,18 @@ import callClient from "@/lib/axios";
 export enum theCategories {
     TV = "TV Series",
     Movie = "Movie",
-    Trending = "trending"
+    Trending = "trending",
 }
 
 export type getMediaResponse = {
-    data:mediaType[]
-}
+    data:mediaType[] | undefined
+} 
 
 type getMediaRequest = {
     category?: theCategories
-    trending?:theCategories.Trending
-}
+    trending?: theCategories.Trending
+    title?:string
+} 
 
 const useGetMedia = (params?: getMediaRequest) => {
     let url = '/all'
