@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Bookmarks } from "@/components/bookmark";
 import DetailsText from "@/components/detailsText/detailsText";
 import { mediaType } from "@/components/SVGAssets";
+import { Play } from "@/components/playButton";
 
 type trending = {
   data:mediaType[]|undefined
@@ -12,7 +13,7 @@ export default function Trending({ data}: trending){
   const trendingCarousel = data?.map((item, index) => {
     return (
       <div
-        className="relative flex-shrink-0 rounded-lg h-[140px] w-[220px] md:h-[230px] md:w-[470px]"
+        className="relative flex group items-center justify-center flex-shrink-0 rounded-lg h-[140px] w-[220px] md:h-[230px] md:w-[470px]"
         key={index + 1}
       >
         <Image
@@ -33,6 +34,9 @@ export default function Trending({ data}: trending){
             pSize={"md:text-[.9375rem] text-xs"}
             titleSize={"md:text-2xl text-[.9375rem]"}
           />
+        </div>
+        <div className="w-[117px] absolute hidden group-hover:block">
+          <Play />
         </div>
       </div>
     );

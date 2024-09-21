@@ -3,6 +3,7 @@ import { Bookmarks } from "../bookmark";
 import { mediaType } from "../SVGAssets";
 import Image from "next/image";
 import { DeleteMedia } from "../deleteMedia";
+import { Play } from "../playButton";
 
 type gridProps = {
   header: string
@@ -14,8 +15,9 @@ export default function MediaGrid({data, header,}: gridProps) {
 
   const mediaGrids = data?.map((item, index) => {
     return (
-      <div key={index + 1} className="xl:h-[226px] flex flex-col flex-shrink-0 xl:w-[280px] w-[164px] h-[154px] sm:w-[220px] sm:h-[192px] relative">
-        <div className="relative">
+      <div key={index + 1} className="xl:h-[226px] group flex flex-col flex-shrink-0 xl:w-[280px] w-[164px] h-[154px] sm:w-[220px] sm:h-[192px] relative">
+        
+        <div className="relative group">
           <Image
             src={item.thumbnail.regular.large.substring(1)}
             width={280}
@@ -23,14 +25,17 @@ export default function MediaGrid({data, header,}: gridProps) {
             alt={"media" + (index + 1)}
             className="absolute w-[164px] sm:w-[220px] sm:h-[140px] h-[110px] top-0 xl:w-[280px] xl:h-[174px] rounded"
           />
+
           <span className="absolute z-40 top-4 right-4">
             <Bookmarks
               item={item}
             />
           </span>
-          <span className="absolute z-40 top-4 left-4">
+
+          <span className="absolute hidden group-hover:block z-40 top-4 left-4">
             <DeleteMedia item={item} />
           </span>
+
         </div>
         <div className="absolute bottom-0 left-0">
           <DetailsText
@@ -38,6 +43,10 @@ export default function MediaGrid({data, header,}: gridProps) {
             pSize={"text-[.8125rem]"}
             titleSize={"sm:text-lg text-sm"}
           />
+        </div>
+
+        <div className="relative w-[117px] hidden group-hover:block mx-auto my-auto">
+            <Play />
         </div>
       </div>
     );
