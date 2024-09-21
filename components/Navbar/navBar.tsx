@@ -7,18 +7,18 @@ import { useRouter } from "next/navigation";
 import AppLogo from "../AppLogo";
 
 export default function NavBar() {
-  const [current, setCurrent] = useState<string|null>("")
+  const [current, setCurrent] = useState<string|null>("dashboard")
   const gotTo = useRouter();
 
   useEffect(() => {
     let localCurrent = localStorage.getItem('page')
-    if (localCurrent !== null || undefined) {
-      return setCurrent(localCurrent)
-    }
-    else {
+    const pageSet = ()=>{
+      if (localCurrent !== null || localCurrent !== undefined) {
+        return setCurrent(localCurrent)
+      }
       setCurrent('dashboard')
     }
-
+    pageSet()
   },[])
 
   const goToPage = (page: string) => {

@@ -5,6 +5,7 @@ export type searchFormProps = {
   handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
   searchParam: string;
 };
+
 export default function SearchForm({
   handleChange,
   handleSubmit,
@@ -28,7 +29,7 @@ export default function SearchForm({
         onChange={handleChange}
         value={searchParam}
         name="search"
-        placeholder="Search for movies"
+        placeholder='Search this section'
         className="w-full h-8 outline-none cursor-pointer border-t-0 border-b-0 border-l-0 border-r-0 focus:border-b-[1px] pb-4 leading-normal font-light focus:border-b-[#5a698f] text-[1rem]"
       />
      {searchImg}

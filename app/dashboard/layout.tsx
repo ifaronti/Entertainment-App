@@ -28,7 +28,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     if (!token || token === null || token === undefined) {
       return goTo.push('/login')
     }
-
   }, [goTo]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       setSearch('')
     }
   };
+
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
