@@ -13,7 +13,7 @@ type GetBookmarksResponse = {
 
 export type GetBookmarksRequest = {title?:string};
 
-const useGetBookmarks = (params?: GetBookmarksRequest) => {
+export default function useGetBookmarks (params?: GetBookmarksRequest, search?:string) {
   let url = `/bookmarks`;
 
   if (params) {
@@ -22,9 +22,7 @@ const useGetBookmarks = (params?: GetBookmarksRequest) => {
     url = `${url}?${searchParams.toString()}`;
   }
 
-  return useSWR(`/bookmarks`, () =>
+  return useSWR(search?params:'/bookmarks', () =>
     callClient.get<GetBookmarksResponse>(url).then((res) => res.data)
   );
 };
-
-export default useGetBookmarks;

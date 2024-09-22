@@ -4,7 +4,7 @@ import React from "react";
 export type navButtonsType = React.ReactElement<React.SVGProps<SVGElement>>;
 
 type navProps = {
-  current: string|null;
+  current: any;
   goToPage: (page: string) => any;
 };
 

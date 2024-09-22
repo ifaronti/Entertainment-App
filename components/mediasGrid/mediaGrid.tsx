@@ -45,7 +45,7 @@ export default function MediaGrid({data, header,}: gridProps) {
           />
         </div>
 
-        <div className="relative w-[117px] hidden group-hover:block mx-auto my-auto">
+        <div className="relative w-[117px] top-[29%] hidden group-hover:block mx-auto">
             <Play />
         </div>
       </div>

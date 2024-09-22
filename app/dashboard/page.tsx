@@ -10,13 +10,11 @@ import useGetMedia from "@/hooks/getMedia";
 export default function Dashboard() {
   const { search } = useContext(allContext)
 
-  const {data:all, mutate} = useGetMedia({title:search?search:'skip'})
+  const { data: all } = useGetMedia(search ? { title: search } : {})
+  console.log(all?.data);
+  
 
   const trending = all?.data?.filter((item) => item.isTrending);
-
-  useEffect(() => {
-    mutate()
-  }, [search, mutate])
 
   let result = `Found ${all?.data?.length} result(s) for ${search}` 
   return (

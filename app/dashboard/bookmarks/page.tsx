@@ -11,19 +11,18 @@ export default function Page() {
   const {
     data: bookmarks,
     isLoading,
-    mutate,
-  } = useGetBookmarks({ title: search !=='' ? search : "skip" });
+  } = useGetBookmarks(search ? { title: search } : {}, search);
 
+  //I included search as an optional prop in the getBookmark hook setup this helps me set
+  //custom keys for fetching data otherwie, the keys will be cached and same data will be
+  //returned even when a title search is requested by user.
+    
   const movies = bookmarks?.data?.filter(
     (item) => item.category === theCategories.Movie
   );
   const tvSeries = bookmarks?.data?.filter(
     (item) => item.category === theCategories.TV
-  );
-
-  useEffect(() => {
-    mutate();
-  }, [search, mutate]);
+  )
 
   let result = `Found ${bookmarks?.data?.length} result(s) for ${search}`;
 

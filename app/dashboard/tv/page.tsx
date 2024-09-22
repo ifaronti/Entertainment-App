@@ -8,14 +8,10 @@ import { allContext } from "../layout";
 export default function Page() {
     const { search } = useContext(allContext)
     
-    const { data: TV, isLoading, mutate } = useGetMedia({
+    const { data: TV, isLoading} = useGetMedia(search?{
         category: theCategories.TV,
-        title:search? search:'skip'
-    })
-
-    useEffect(() => {
-        mutate()
-    }, [mutate, search])
+        title:search
+    }:{category:theCategories.TV})
     
     let result = `Found ${TV?.data?.length} result(s) for ${search}` 
     

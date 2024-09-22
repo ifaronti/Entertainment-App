@@ -1,17 +1,20 @@
 import { deleteUpload } from "../API-calls/upload";
 import { mediaType } from "../SVGAssets";
 import React from "react";
+import useGetMedia from "@/hooks/getMedia";
 
 type props = {
   item: mediaType;
 };
 
 export default function DeleteMedia({ item }: props) {
+  const {mutate} = useGetMedia()
 
-  const deleteFN = (title:string)=>{
+  const deleteFN = async(title:string)=>{
     const token = localStorage.getItem('token')
-      deleteUpload(title, token)
-      
+    await deleteUpload(title, token)
+    await mutate()
+    return
   }
   
   const deleteBTN = (

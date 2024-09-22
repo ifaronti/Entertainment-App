@@ -24,9 +24,9 @@ const useGetMedia = (params?: getMediaRequest) => {
     if (params) {
         const searchParams = new URLSearchParams(params)
         url = `${url}?${searchParams.toString()}`
-    }
+    }    
 
-    return useSWR('/all', () => 
+    return useSWR(params, () => 
         callClient.get<getMediaResponse>(url).then((res)=>res.data))
 }
 

@@ -4,6 +4,7 @@ import {useEffect, useState, useContext } from "react";
 import UploadDetails from "./MediaDetails";
 import { AIcontext } from "./layout";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 type event = React.ChangeEvent<HTMLInputElement | HTMLSelectElement>;
 
@@ -18,6 +19,7 @@ export default function Page() {;
     isAI:false
   });
   const [err, setErr] = useState("");
+  const goTo = useRouter()
   
   useEffect(() => {
     setDetails(prev => {
@@ -39,7 +41,7 @@ export default function Page() {;
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { title, year, rating, category, image, isAI} = details;
     if (!title || !year || !rating || !category) {
@@ -51,9 +53,10 @@ export default function Page() {;
     const form = e.currentTarget;
     const formData = new FormData(form);
 
-    uploadImage(formData, token);
+    await uploadImage(formData, token);
     localStorage.removeItem('isAI')
     localStorage.removeItem('image')
+    goTo.push('/dashboard')
   };
 
   return (
