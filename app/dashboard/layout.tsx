@@ -20,14 +20,14 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [search, setSearch] = useState('')
   const [current, setCurrent] = useState<string|null>("")
   const goTo = useRouter()
-
-  useEffect(() => {
+  
+  const auth = () => {
     const token = localStorage.getItem('token')
     if (!token || token === null || token === undefined) {
-      return goTo.push('/login')
+        goTo.push('/login')
     }
-    setCurrent(localStorage.getItem('page'))
-  }, [goTo]);  
+  }
+  auth()
 
   const goToPage = (page: string) => {
     setCurrent(page);

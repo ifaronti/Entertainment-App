@@ -18,9 +18,9 @@ export default function MediaGrid({ data, header }: gridProps) {
     return (
       <motion.div
         key={index + 1}
-        initial={{opacity:0.7, scale:0.8}}
-        whileInView={{ opacity: 1, scale:1 }}
-        transition={{ duration: 0.3}}
+        initial={{opacity:0.5}}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8}}
         viewport={{ once: true, amount: 0.8 }}
       >
         <div className="xl:h-[226px] group flex flex-col flex-shrink-0 xl:w-[280px] w-[164px] h-[154px] sm:w-[220px] sm:h-[192px] relative">

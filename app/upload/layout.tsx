@@ -2,6 +2,7 @@
 import { AppLogo } from "@/components"
 import { Section } from "@/components"
 import { useEffect, useState, createContext } from "react"
+import { useRouter } from "next/navigation"
 
 type AI = {
     isAI: boolean,
@@ -17,7 +18,17 @@ const contextInit = {
 export const AIcontext = createContext<AI>(contextInit)
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-    const [AIdetails, setAIdetails] = useState<AI>({isAI: false, image: '', token:''})
+    const [AIdetails, setAIdetails] = useState<AI>({ isAI: false, image: '', token: '' })
+    const goTo = useRouter()
+
+    const auth = () => {
+        const token = localStorage.getItem('token')
+        if (!token || token === null || token === undefined) {
+            goTo.push('/login')
+        }
+    }
+
+    auth()
     
     useEffect(() => {
         const image = localStorage.getItem('image')
