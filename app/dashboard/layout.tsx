@@ -27,7 +27,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       return goTo.push('/login')
     }
     setCurrent(localStorage.getItem('page'))
-  }, [goTo]);
+  }, [goTo]);  
 
   const goToPage = (page: string) => {
     setCurrent(page);
@@ -42,7 +42,6 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       setSearch('')
     }
   };
-
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

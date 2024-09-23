@@ -5,16 +5,17 @@ import { MediaGrid } from "@/components/mediasGrid";
 import { useContext, useEffect} from "react";
 import { allContext } from "./layout";
 import useGetMedia from "@/hooks/getMedia";
-
+import { mutate } from "swr";
 
 export default function Dashboard() {
   const { search } = useContext(allContext)
-
-  const { data: all } = useGetMedia(search ? { title: search } : {})
-  console.log(all?.data);
-  
+  const {data:all} = useGetMedia(search?{title:search}:{})
 
   const trending = all?.data?.filter((item) => item.isTrending);
+
+  useEffect(() => {
+    mutate(['/uploadDelete', 'refetch'])
+  },[search])
 
   let result = `Found ${all?.data?.length} result(s) for ${search}` 
   return (

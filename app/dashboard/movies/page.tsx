@@ -5,13 +5,18 @@ import useGetMedia from "@/hooks/getMedia";
 import { theCategories } from "@/hooks/getMedia";
 import { useEffect, useContext } from "react";
 import { allContext } from "../layout";
+import { mutate } from "swr";
 
 export default function Page() {
   const {search} = useContext(allContext)
   const { data: movies, isLoading } = useGetMedia(search?{
     category: theCategories.Movie,
     title:search
-  }:{category:theCategories.Movie})
+  } : { category: theCategories.Movie })
+  
+  useEffect(() => {
+    mutate(['/uploadDelete', 'refetch'])
+  },[search])
     
   let result = `Found ${movies?.data?.length} result(s) for ${search}` 
 

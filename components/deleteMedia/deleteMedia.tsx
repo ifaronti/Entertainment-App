@@ -1,20 +1,19 @@
 import { deleteUpload } from "../API-calls/upload";
 import { mediaType } from "../SVGAssets";
 import React from "react";
-import useGetMedia from "@/hooks/getMedia";
+import { mutate } from "swr";
 
 type props = {
   item: mediaType;
 };
 
 export default function DeleteMedia({ item }: props) {
-  const {mutate} = useGetMedia()
+  // const {mutate} = useGetMedia()
 
   const deleteFN = async(title:string)=>{
     const token = localStorage.getItem('token')
     await deleteUpload(title, token)
-    await mutate()
-    return
+    mutate(['/uploadDelete', 'refetch'])
   }
   
   const deleteBTN = (
@@ -26,7 +25,8 @@ export default function DeleteMedia({ item }: props) {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         fill="#000000"
-    >
+        className="cursor-pointer"
+      >
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g
         id="SVGRepo_tracerCarrier"

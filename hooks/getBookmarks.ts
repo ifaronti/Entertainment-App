@@ -22,7 +22,7 @@ export default function useGetBookmarks (params?: GetBookmarksRequest, search?:s
     url = `${url}?${searchParams.toString()}`;
   }
 
-  return useSWR(search?params:'/bookmarks', () =>
+  return useSWR(['/bookmarks'], () =>
     callClient.get<GetBookmarksResponse>(url).then((res) => res.data)
   );
 };

@@ -4,6 +4,7 @@ import { MediaGrid } from "@/components/mediasGrid"
 import { theCategories } from "@/hooks/getMedia"
 import { useContext, useEffect } from "react";
 import { allContext } from "../layout";
+import { mutate } from "swr";
 
 export default function Page() {
     const { search } = useContext(allContext)
@@ -11,7 +12,11 @@ export default function Page() {
     const { data: TV, isLoading} = useGetMedia(search?{
         category: theCategories.TV,
         title:search
-    }:{category:theCategories.TV})
+    } : { category: theCategories.TV })
+    
+    useEffect(() => {
+        mutate(['/uploadDelete', 'refetch'])
+    },[search])
     
     let result = `Found ${TV?.data?.length} result(s) for ${search}` 
     

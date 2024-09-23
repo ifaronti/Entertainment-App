@@ -9,7 +9,7 @@ export enum theCategories {
 }
 
 export type getMediaResponse = {
-    data:mediaType[] | undefined
+    data: mediaType[] | undefined
 } 
 
 type getMediaRequest = {
@@ -26,7 +26,7 @@ const useGetMedia = (params?: getMediaRequest) => {
         url = `${url}?${searchParams.toString()}`
     }    
 
-    return useSWR(params, () => 
+    return useSWR(['/uploadDelete', 'refetch'], () => 
         callClient.get<getMediaResponse>(url).then((res)=>res.data))
 }
 

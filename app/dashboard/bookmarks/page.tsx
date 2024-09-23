@@ -5,6 +5,7 @@ import useGetBookmarks from "@/hooks/getBookmarks";
 import { theCategories } from "@/hooks/getMedia";
 import { allContext } from "../layout";
 import { useContext, useEffect } from "react";
+import { mutate } from "swr";
 
 export default function Page() {
   const { search } = useContext(allContext);
@@ -12,10 +13,6 @@ export default function Page() {
     data: bookmarks,
     isLoading,
   } = useGetBookmarks(search ? { title: search } : {}, search);
-
-  //I included search as an optional prop in the getBookmark hook setup this helps me set
-  //custom keys for fetching data otherwie, the keys will be cached and same data will be
-  //returned even when a title search is requested by user.
     
   const movies = bookmarks?.data?.filter(
     (item) => item.category === theCategories.Movie
@@ -23,6 +20,10 @@ export default function Page() {
   const tvSeries = bookmarks?.data?.filter(
     (item) => item.category === theCategories.TV
   )
+
+  useEffect(() => {
+    mutate(['/bookmarks'])
+  },[search])
 
   let result = `Found ${bookmarks?.data?.length} result(s) for ${search}`;
 
