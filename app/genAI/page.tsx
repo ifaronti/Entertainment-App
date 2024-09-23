@@ -8,7 +8,7 @@ import { responseType } from "./imageRequestForm";
 import Image from "next/image";
 import Bar from "@/components/loadingStates/progressBar";
 import UploadorDelete from "./afterGenAIText";
-import Link from "next/link";
+import { Return } from "@/components/returnToDashboard";
 
 export default function Page() {
   const [promptParams, setPromptParams] = useState({ type: "", text: "" });
@@ -79,9 +79,7 @@ export default function Page() {
         <div className="w-full flex flex-col justify-center items-center">
           Generating
           <Bar />
-          <Link className="text-[white] text-center" href="/dashboard">
-            Return to dashboard
-          </Link>
+          <Return />
         </div>
       )}
 
@@ -93,9 +91,7 @@ export default function Page() {
             handleSubmit={handleSubmit}
             err={err}
           />
-          <Link className="text-[#fff] text-center" href="/dashboard">
-            Return to dashboard
-          </Link>
+          <Return/>
         </>
       )}
     </section>
