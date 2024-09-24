@@ -23,11 +23,7 @@ export default function Page() {
 
   useEffect(() => {
     setDetails((prev) => {
-      return {
-        ...prev,
-        isAI: isAI,
-        image: image,
-      };
+      return {...prev, isAI: isAI,image: image};
     });
   }, [image, isAI]);
 
