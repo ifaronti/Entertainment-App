@@ -9,7 +9,7 @@ import { mutate } from "swr";
 
 export default function Dashboard() {
   const { search } = useContext(allContext)
-  const {data:all} = useGetMedia(search?{title:search}:{})
+  const {data:all} = useGetMedia(search?{title:search}:'')
 
   const trending = all?.data?.filter((item) => item.isTrending);
 

@@ -20,26 +20,25 @@ export const AIcontext = createContext<AI>(contextInit)
 export default function Layout({ children }: { children: React.ReactNode }) {
     const [AIdetails, setAIdetails] = useState<AI>({ isAI: false, image: '', token: '' })
     const goTo = useRouter()
-
-    const auth = () => {
-        const token = localStorage.getItem('token')
-        if (!token || token === null || token === undefined) {
-            goTo.push('/login')
-        }
-    }
-
-    auth()
     
     useEffect(() => {
         const image = localStorage.getItem('image')
         const isAI = localStorage.getItem('isAI')
         const token = localStorage.getItem('token')
+        const auth = () => {
+            const token = localStorage.getItem('token')
+            if (!token || token === null || token === undefined) {
+                goTo.push('/login')
+            }
+        }
+    
+        auth()
 
         if (isAI === 'true') {
             return setAIdetails({isAI:true, image:image, token:token})
         }
         setAIdetails({isAI:false, image:'', token:token})
-    },[])
+    },[goTo])
 
     return (
         <AIcontext.Provider value={AIdetails}>

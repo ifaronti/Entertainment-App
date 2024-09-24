@@ -16,6 +16,7 @@ const Page = () => {
 
   function redirect(data:paramsType) {
     if (!data.authorization) {
+      console.log(data);
       return setErr(data)
     }
     localStorage.setItem('token', data.authorization)
@@ -28,7 +29,8 @@ const Page = () => {
       setErr('all fields are required for authentication')
       return
     }
-    await loginUser({email, password}, redirect)
+    localStorage.setItem('page', 'dashboard')
+    await loginUser({ email, password }, redirect)
   }
 
   return (

@@ -11,7 +11,7 @@ type GetBookmarksResponse = {
   data: mediaType[];
 };
 
-export type GetBookmarksRequest = {title?:string};
+export type GetBookmarksRequest = {title?:string} | string
 
 export default function useGetBookmarks (params?: GetBookmarksRequest, search?:string) {
   let url = `/bookmarks`;

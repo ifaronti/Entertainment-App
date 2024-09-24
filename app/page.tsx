@@ -9,7 +9,7 @@ export default function Home() {
     goTo.push(page)
   }
   return (
-    <main className="flex gap-10 w-full min-h-screen bg-[#07071c] items-center justify-center">
+    <main className="flex md:flex-row flex-col gap-10 w-full min-h-screen bg-[#07071c] items-center justify-center">
       <button onClick={()=>navigate('/register')} className='w-[10rem] text-center h-[3rem] text-white bg-[#fc4747]'>Sign Up</button>
       <button onClick={()=>navigate('/login')} className='w-[10rem] text-center h-[3rem] text-white bg-[#fc4747]' >Login</button>
     </main>

@@ -12,7 +12,7 @@ export default function Page() {
   const {
     data: bookmarks,
     isLoading,
-  } = useGetBookmarks(search ? { title: search } : {}, search);
+  } = useGetBookmarks(search ? { title: search } :'', search);
     
   const movies = bookmarks?.data?.filter(
     (item) => item.category === theCategories.Movie

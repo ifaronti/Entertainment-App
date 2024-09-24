@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    APP_API: "http://localhost:4000/api",
+    APP_API: "https://f0jmhhiva6.execute-api.eu-west-1.amazonaws.com/latest/api",
   },
   images: {
     remotePatterns: [

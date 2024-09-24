@@ -56,6 +56,7 @@ export default function Page() {
     await uploadImage(formData, token);
     localStorage.removeItem("isAI");
     localStorage.removeItem("image");
+    localStorage.setItem('page', 'dashboard')
     goTo.push("/dashboard");
   };
 

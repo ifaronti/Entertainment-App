@@ -16,7 +16,7 @@ type getMediaRequest = {
     category?: theCategories
     trending?: theCategories.Trending
     title?:string
-} 
+} |string
 
 const useGetMedia = (params?: getMediaRequest) => {
     let url = '/all'

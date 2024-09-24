@@ -18,7 +18,7 @@ export const uploadImage = async (
       },
     });
     
-  } catch (err) {
+  } catch (err:any) {
     console.log(err);
   }
 };

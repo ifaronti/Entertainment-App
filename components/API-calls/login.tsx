@@ -20,7 +20,6 @@ export const loginUser = async (body: requestBody, redirect: redirectsType) => {
         const url = process.env.APP_API
         const { data } = await axios.post(`${url}/login`, body)
         redirect(data)
-        
     }
     catch (err:any) {
         redirect(err.message);
