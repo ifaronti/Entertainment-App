@@ -77,4 +77,5 @@ export type mediaType = {
   isTrending: boolean;
   isBookmarked: boolean;
   isDeletable: boolean;
+  isAI:Boolean
 };

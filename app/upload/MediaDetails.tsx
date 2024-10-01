@@ -34,7 +34,7 @@ export default function UploadDetails({
         type="text"
         onChange={handleChange}
         value={details.title}
-        maxLength={15}
+        maxLength={25}
         name="title"
         placeholder="Movie or TV Series title"
         className={registerStyles.input}

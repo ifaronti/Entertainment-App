@@ -13,6 +13,9 @@ export default function Page() {
         category: theCategories.TV,
         title:search
     } : { category: theCategories.TV })
+
+    const notAI = TV?.data?.filter(item=>!item.isAI)
+    const AI = TV?.data?.filter(item=>item.isAI)
     
     useEffect(() => {
         mutate(['/uploadDelete', 'refetch'])
@@ -25,7 +28,10 @@ export default function Page() {
             {
                 isLoading ? <p>Loading...</p>
                 :
-                <MediaGrid data={TV?.data} header={search? result:"TV Series"} />
+                <>
+                <MediaGrid data={notAI} header={search? result:"TV Series"} />
+                {AI?.length !==0 &&<MediaGrid data={AI} header={search? result:"AI Generated TV Series"} />}
+                </>
             }
         </div>
     )

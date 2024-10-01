@@ -23,14 +23,14 @@ export default function MediaGrid({ data, header }: gridProps) {
         transition={{ duration: 0.8}}
         viewport={{ once: true, amount: 0.8 }}
       >
-        <div className="xl:h-[226px] group flex flex-col flex-shrink-0 xl:w-[280px] w-[164px] h-[154px] sm:w-[220px] sm:h-[192px] relative">
+        <div className={`group flex flex-col flex-shrink-0 xl:w-[280px] w-[164px] ${item.isAI ? 'xl:h-[331px] h-[208px] sm:h-[275px]' : 'xl:h-[226px] h-[154px] sm:h-[192px]'} sm:w-[220px] relative`}>
           <div className="relative group">
             <Image
               src={item.thumbnail.regular.large.substring(1)}
               width={280}
               height={174}
               alt={"media" + (index + 1)}
-              className="absolute w-[164px] sm:w-[220px] sm:h-[140px] h-[110px] top-0 xl:w-[280px] xl:h-[174px] rounded"
+              className={`absolute w-[164px] sm:w-[220px] ${item.isAI ? 'xl:h-[280px]':'sm:h-[140px] h-[110px] xl:h-[174px]'} top-0 xl:w-[280px] rounded`}
             />
 
             <span className="absolute z-40 top-4 right-4">

@@ -19,13 +19,18 @@ export default function Page() {
   },[search])
     
   let result = `Found ${movies?.data?.length} result(s) for ${search}` 
+  const notAI = movies?.data?.filter(item=>!item.isAI)
+  const AI = movies?.data?.filter(item=>item.isAI)
 
   return (
     <div className="flex flex-col mt-7 flex-grow-0 flex-shrink-0">
       {
         isLoading ? <p>Loading...</p>
-        :
-        <MediaGrid data={movies?.data} header= {search? result:"Movies"} />
+          :
+          <div className="flex flex-col gap-20">
+            {notAI?.length !==0 && <MediaGrid data={notAI} header={search ? result : "Movies"} />}
+            {AI?.length !==0 && <MediaGrid data={AI} header={search ? result : "AI Generated Movies"} />}
+          </div>
       }
     </div>
   );
