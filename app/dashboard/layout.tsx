@@ -25,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     const auth = () => {
       const token = localStorage.getItem('token')
       if (!token || token === null || token === undefined) {
-        return goTo.push('/login')
+        return goTo.push('/')
       }
     }
     auth()
